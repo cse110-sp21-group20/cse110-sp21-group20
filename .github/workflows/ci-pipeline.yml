@@ -71,7 +71,6 @@ jobs:
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-      - name: 
       #Run ESLint
       - name: Lint
         run: npm run lint
@@ -94,7 +93,8 @@ jobs:
         with:
           node-version: ${{matrix.node}}
       #Cache dependencies for faster workflow runs
-      - uses: actions/cache@v2
+      - name: Cache
+        uses: actions/cache@v2
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
