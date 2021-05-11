@@ -9,17 +9,21 @@ on:
     types: [opened, synchronized, reopened]
     paths: 
       - "src/**"
-      
-
+  # Still want PRs because they allow you to make changes if your code broke 
+  # something, but should run on push anyways just in case
+  push:
+    branches: [master]
+    paths:
+      - "src/**"
+    
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-
+    branches: [master]
+    types:
+      - requested
 jobs:
-  lint:
+  setup-node:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node: [14]
     env:
       working-dir: ./src/easify
     steps:
@@ -32,39 +36,8 @@ jobs:
         with:
           node-version: ${{matrix.node}}
       #Cache dependencies for faster workflow runs
-      - uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      #Install with npm
-      - name: Install modules
-        run: |
-          npm ci
-        working-directory: ${{env.working-dir}}
-      #Run ESLint
-      - name: Lint
-        run: npm run lint
-        working-directory: ${{env.working-dir}}
-  build:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node: [14]
-    env:
-      working-dir: ./src/easify
-    steps:
-      #Checkout
-      - name: Checkout
-        uses: actions/checkout@v2
-      #Node Setup
-      - name: Node Setup
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{matrix.node}}
-      #Cache dependencies for faster workflow runs
-      - uses: actions/cache@v2
+      - name: Cache node modules
+        uses: actions/cache@v2
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
@@ -74,8 +47,90 @@ jobs:
       - name: Install modules
         run: npm ci
         working-directory: ${{env.working-dir}}
+
+  lint:
+    needs: setup-node
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [14]
+    env:
+      working-dir: ./src/easify
+    steps:
+      #Checkout
+      - name: Checkout
+        uses: actions/checkout@v2
+      #Node Setup
+      - name: Node Setup
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{matrix.node}}
+      #Get cached modules
+      - name: Cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+      - name: 
+      #Run ESLint
+      - name: Lint
+        run: npm run lint
+        working-directory: ${{env.working-dir}}
+  build:
+    needs: setup-node
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [14]
+    env:
+      working-dir: ./src/easify
+    steps:
+      #Checkout
+      - name: Checkout
+        uses: actions/checkout@v2
+      #Node Setup
+      - name: Node Setup
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{matrix.node}}
+      #Cache dependencies for faster workflow runs
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+      #Install with npm
+      # - name: Install modules
+      #   run: npm ci --prefer-offline --no-audit
+      #   working-directory: ${{env.working-dir}}
       #Build and test
       - name: Build
         run: npm run build
         working-directory: ${{env.working-dir}}
-
+  # create-docs:
+  #   runs-on: ubuntu-latest
+  #   env:
+  #     working-dir: ./src/easify
+  #   needs: lint
+  #   steps:
+  #     #Checkout
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
+  #     #Node Setup
+  #     - name: Node Setup
+  #       uses: actions/setup-node@v2
+  #       with:
+  #         node-version: ${{matrix.node}}
+  #     #Cache dependencies for faster workflow runs
+  #     - name: Cache
+  #       uses: actions/cache@v2
+  #       with:
+  #         path: ~/.npm
+  #         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+  #     #Install with npm
+  #     - name: Install modules
+  #       run: npm ci --prefer-offline --no-audit
+  #       working-directory: ${{env.working-dir}}
+  #     #Build and test
+  #     - name: Build
+  #       run: npm run build
+  #       working-directory: ${{env.working-dir}}
