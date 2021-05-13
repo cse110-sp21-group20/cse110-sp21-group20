@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint pages/*"
+    "lint": "eslint pages/*",
+    "setup": "bash ./setup.sh"
   },
   "dependencies": {
     "next": "10.2.0",
