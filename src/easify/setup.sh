@@ -75,9 +75,8 @@ gitTasks() {
     git config user.name "$NAME"
     git config credential.helper "cache --timeout 900"
     git remote add -f upstream "$GROUP_REPO"
-    git branch master upstream/master
+    git branch master origin/master
     git checkout master
-    git push --dry-run --set-upstream origin master
     echo "Git configuration complete."
 }
 
