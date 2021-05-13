@@ -9,12 +9,14 @@ on:
     types: [opened, synchronized, reopened]
     paths: 
       - "src/**"
+      
   # Still want PRs because they allow you to make changes if your code broke 
   # something, but should run on push anyways just in case
   push:
     branches: [master]
     paths:
       - "src/**"
+      - "!src/**.sh" # No script files.
     
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:

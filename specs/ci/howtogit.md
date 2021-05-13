@@ -1,7 +1,33 @@
 # How to use Git
 This document is a guide for how to work with `git` in this group. This assumes you already have `git` installed, if not you can download it [here](https://git-scm.com/downloads). 
 
-## Setup
+
+## Fast Setup
+To make it a lot easier to setup your git stuff, I've written a script.
+
+### Fork the repo
+First, fork the group repo.
+
+### Clone the repo
+Clone the fork into your machine. Run
+`git clone <fork repo link>`
+If this fails because `git` cannot find the repo, you can run
+`git clone https://<githubusername>@github.com/...`. Replace `githubusername` with your github username, and fill the rest of the link with the regular fork link. This may prompt you to enter a password; use a personal access token with repo access.
+
+### Run `npm run setup`
+First change directories into `src/easify`:
+`cd cse110-sp21-group20/src/easify` - Note this might cause a problem if the cloned folder isn't the same name
+ Then run:
+ `npm run setup`
+Enter your github email and name. You may be prompted to enter your github username and password. Use your actual username (not email) and once again, use a personal access token with repo access (could be the same one you used earlier). The script will proceed to set everything up, including installing node modules.
+
+**Warning**: If `npm` is out of date, the script will attempt to update it. If it fails, you should first update it using `npm update -g npm`, and it could require admin privileges (i.e. sudo).
+
+To know whether the script worked, you can check the fork repo. See if there is a main and a master branch. If you run `git status` in your local repo, it should say "on branch master", and is even with "origin/master".
+
+## Manual Setup
+**Note**: You can use fast setup described above, and skip this section.
+
 This section is for setting up the group repo for the first time. If something catastrophic happened, and you would like to reset your entire working directory (aka discard ALL changes without saving - this has no undo!), you can delete your repo, and start from here again. If any of the commands fail during setup, you can delete the folder the repo is in and start over and/or message Tyler to let him know about it.
 
 ### Create a fork of the group repo
@@ -46,8 +72,14 @@ You are set! Now you can continue to the next section and start working.
 Now that your local environment is set up, we can start working. 
 
 ### Update the local repo
-At this point, your fork should not have any changes, staged or unstaged. Before you begin, make sure your fork is up-to-date. Run:
-1. `git pull upstream master`
+At this point, your fork should not have any changes, staged or unstaged. Before you begin, make sure your fork is up-to-date. 
+
+From `src/easify/`, you can run `npm run update`. This will update your repo. If changes were made, you may have to run `git commit` to finish the merge.
+
+OR
+
+Run:
+1. `git pull --no-commit upstream master`
 This will first fetch the remote repository, then attempt to merge it into your local master.
 2. `git push`
 This will update your fork with the parent repo's changes, then push those changes into your local repo.

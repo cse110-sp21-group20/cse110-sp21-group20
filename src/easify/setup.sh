@@ -8,7 +8,7 @@ warn() {
 }
 # Checks if git and npm are installed
 checkRequirements() {
-    git --version
+    git --version &> /dev/null
     if [ "$?" -ne 0 ]; then
         echo "Git not installed."
         exit 1
@@ -19,7 +19,7 @@ checkRequirements() {
         exit 1
     else
         NPM_VER="${NPM_VER%%.*}"
-        if [ NPM_VER -lt 7 ]; then
+        if [ "$NPM_VER" -lt 7 ]; then
             warn "npm not up-to-date. Attempting to update..."
             npm update -g npm #Might need sudo here
             if [ "$?" -ne 0 ]; then
@@ -33,7 +33,7 @@ checkRequirements() {
 # Extracts command line args
 getArgs() {
     echo "Running setup script. It may require some Github authentication; use a personal access token w/ repo permissions as a password. Press CTL+C to cancel at any time."
-    while [ $# -gt 0 ]; do
+    while [ "$#" -gt 0 ]; do
         case "$1" in
             --e|--email)
                 shift
@@ -77,7 +77,7 @@ gitTasks() {
     git remote add -f upstream "$GROUP_REPO"
     git branch master upstream/master
     git checkout master
-    git push --set-upstream origin master
+    git push --dry-run --set-upstream origin master
     echo "Git configuration complete."
 }
 

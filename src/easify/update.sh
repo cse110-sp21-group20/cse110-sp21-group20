@@ -1,2 +1,2 @@
-git pull upstream master
+git pull --no-commit upstream master
 git push
