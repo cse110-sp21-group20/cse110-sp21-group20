@@ -22,7 +22,7 @@ checkRequirements() {
         if [ NPM_VER -lt 7 ]; then
             warn "npm not up-to-date. Attempting to update..."
             npm update -g npm #Might need sudo here
-            if [ "$?" -ne 0 ]
+            if [ "$?" -ne 0 ]; then
                 echo "Could not update npm. (Might need sudo permissions)"
                 exit 1
             fi
