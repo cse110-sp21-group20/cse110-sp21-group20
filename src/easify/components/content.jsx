@@ -51,7 +51,7 @@ export default function Content({
           ])}
           className={styles.addbtn}
         >
-          Add Entry
+          Create New Entry
         </button>
       </div>
     </div>

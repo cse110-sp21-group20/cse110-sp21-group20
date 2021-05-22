@@ -1,6 +1,6 @@
 /** GET RID OF LINE BELOW WHEN DATA IS REAL */
 /* eslint-disable no-unused-vars */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from '../styles/Main.module.css';
 import models from '../models/models';
 import Dash from '../components/dash';
@@ -31,6 +31,10 @@ export default function Main() {
   const [currWeek, setCurrWeek] = useState('w1');
 
   const [entries, setEntries] = useState(data[currYear][currQuarter][currWeek]);
+
+  useEffect(() => {
+    // TODO: UPDATE LOCAL STORAGE HERE
+  }, [entries]);
   return (
     <div className={styles.container}>
       {showContent
