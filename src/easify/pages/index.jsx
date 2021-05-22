@@ -22,20 +22,22 @@ import Content from '../components/content';
  */
 export default function Main() {
   /** @todo FAKE DATA FOR DEBUG PURPOSES */
-  const fakeData = [models.year];
 
   const [showContent, setShowContent] = useState(false);
 
+  const [data, setData] = useState([models.year]);
   const [currYear, setCurrYear] = useState(0);
   const [currQuarter, setCurrQuarter] = useState('q1');
   const [currWeek, setCurrWeek] = useState('w1');
 
+  const [entries, setEntries] = useState(data[currYear][currQuarter][currWeek]);
   return (
     <div className={styles.container}>
       {showContent
         ? (
           <Content
-            data={fakeData}
+            data={{ val: data, set: setData }}
+            entries={{ val: entries, set: setEntries }}
             year={{ val: currYear, set: setCurrYear }}
             quarter={{ val: currQuarter, set: setCurrQuarter }}
             week={{ val: currWeek, set: setCurrWeek }}
@@ -44,7 +46,7 @@ export default function Main() {
         )
         : (
           <Dash
-            data={fakeData}
+            data={data}
             changePage={() => setShowContent(true)}
           />
         )}

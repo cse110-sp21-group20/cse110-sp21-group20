@@ -7,7 +7,7 @@ import styles from '../styles/YearCard.module.css';
  */
 
 /**
- * YearCard. 
+ * YearCard.
  * @returns Content object
  * @author Josh Dreben
  * @name YearCard

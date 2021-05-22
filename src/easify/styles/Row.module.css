@@ -1,0 +1,25 @@
+.row {
+  width: 100%;
+  padding: 0.2rem;
+  display: flex;
+  box-sizing: border-box;
+}
+
+.row > input {
+  background-color: var(--color-gray);
+  border: 0;
+  width: 100%;
+  font-weight: 300;
+  font-size: 1.2rem;
+}
+
+.row > input:focus {
+  outline: none;
+}
+
+.row > input::placeholder {
+  color: var(--color-black);
+  opacity: 1;
+  font-weight: 300;
+  font-size: 1.2rem;
+}

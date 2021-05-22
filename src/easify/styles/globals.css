@@ -11,6 +11,11 @@ body,
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+body {
+  width: 100%;
+  height: 100vh;
+}
+
 /* Global Variables For Color Pallette */
 :root {
   --color-white: white;
