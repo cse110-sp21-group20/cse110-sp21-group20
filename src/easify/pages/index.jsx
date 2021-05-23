@@ -25,11 +25,15 @@ export default function Main() {
 
   const [showContent, setShowContent] = useState(false);
 
+  /** FULL DATA FROM */
   const [data, setData] = useState([models.year]);
+
+  /** STATE USED TO LOOK UP SPECIFIC WEEK OF ENTRIES */
   const [currYear, setCurrYear] = useState(0);
   const [currQuarter, setCurrQuarter] = useState('q1');
   const [currWeek, setCurrWeek] = useState('w1');
 
+  /** CURRENT ENTRIES */
   const [entries, setEntries] = useState(data[currYear][currQuarter][currWeek]);
 
   useEffect(() => {

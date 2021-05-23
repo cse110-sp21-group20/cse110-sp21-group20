@@ -16,6 +16,10 @@ body {
   height: 100vh;
 }
 
+.hidden {
+  display: none;
+}
+
 /* Global Variables For Color Pallette */
 :root {
   --color-white: white;
