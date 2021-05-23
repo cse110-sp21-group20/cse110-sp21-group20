@@ -1,6 +1,6 @@
 .row {
   width: 100%;
-  padding: 0.2rem;
+  padding-bottom: 1rem;
   display: flex;
   box-sizing: border-box;
 }
@@ -15,6 +15,10 @@
 
 .row > input:focus {
   outline: none;
+}
+
+.row > svg {
+  margin-left: -0.3rem;
 }
 
 .row > input::placeholder {
