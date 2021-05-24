@@ -36,6 +36,7 @@ const Export = {
   year: emptyYear,
   entry: emptyEntry,
   row: emptyRow,
+  week: weekDataModel,
 };
 
 export default Export;

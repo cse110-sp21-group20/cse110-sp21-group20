@@ -22,6 +22,7 @@ body {
 
 /* Global Variables For Color Pallette */
 :root {
+  --color-hazard: rgb(255, 74, 74);
   --color-white: white;
   --color-black: #130f26;
   --color-gray: #f7f9fa;

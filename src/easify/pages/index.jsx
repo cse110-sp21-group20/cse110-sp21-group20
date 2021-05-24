@@ -26,7 +26,7 @@ export default function Main() {
   const [showContent, setShowContent] = useState(false);
 
   /** FULL DATA FROM */
-  const [data, setData] = useState([models.year]);
+  const [data, setData] = useState([]);
 
   /** STATE USED TO LOOK UP SPECIFIC WEEK OF ENTRIES */
   const [currYear, setCurrYear] = useState(0);
@@ -34,7 +34,8 @@ export default function Main() {
   const [currWeek, setCurrWeek] = useState('w1');
 
   /** CURRENT ENTRIES */
-  const [entries, setEntries] = useState(data[currYear][currQuarter][currWeek]);
+  const [entries, setEntries] = (data.length > 0)
+    ? useState(data[currYear][currQuarter][currWeek]) : useState([]);
 
   useEffect(() => {
     // TODO: UPDATE LOCAL STORAGE HERE
@@ -54,7 +55,7 @@ export default function Main() {
         )
         : (
           <Dash
-            data={data}
+            data={{ val: data, set: setData }}
             changePage={() => setShowContent(true)}
           />
         )}
