@@ -29,6 +29,7 @@ const emptyYear = {
   q1: weekDataModel,
   q2: weekDataModel,
   q3: weekDataModel,
+  q4: weekDataModel,
 };
 
 const Export = {

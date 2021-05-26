@@ -2,11 +2,21 @@ import styles from '../styles/Content.module.css';
 import Image from 'next/image'
 
 /**
- * This file will contain all necessary UI+Implementation
- * For the main content of the web-app
- * @returns Content Object
+ * @file This file will contain all necessary UI+Implementation 
+ * for the main content of the web-app
+ * @module Content
  */
-export default function Content({ changePage }) {
+
+/**
+ * Content of the web-app
+ * @returns Content object
+ * @author Josh Dreben
+ * @name Content
+ * @function
+ */
+/* DELETE LINE BELOW WHEN YEAR, WEEK, AND QUARTER ARE ALL BEING USED */
+// eslint-disable-next-line no-unused-vars
+export default function Content({ changePage, year, week, quarter }) {
   return (
     <div className={styles.wrap}>
       {/** HEADER: YEAR, SETTINGS, PROFILE, QUARTERS, PREVIOUS */}
@@ -17,8 +27,6 @@ export default function Content({ changePage }) {
       </div> 
 
       <div className={styles.header}>
-
-        {/** TEMP BACK BTN FOR EASE OF USE */}
         <button className={styles.backbtn} type="button" onClick={() => changePage()}>
           Go Back
         </button>
