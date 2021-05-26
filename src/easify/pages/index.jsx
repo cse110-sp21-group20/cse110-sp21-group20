@@ -1,6 +1,6 @@
 /** GET RID OF LINE BELOW WHEN DATA IS REAL */
 /* eslint-disable no-unused-vars */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from '../styles/Main.module.css';
 import models from '../models/models';
 import Dash from '../components/dash';
@@ -22,20 +22,31 @@ import Content from '../components/content';
  */
 export default function Main() {
   /** @todo FAKE DATA FOR DEBUG PURPOSES */
-  const fakeData = [models.year];
 
   const [showContent, setShowContent] = useState(false);
 
+  /** FULL DATA FROM */
+  const [data, setData] = useState([]);
+
+  /** STATE USED TO LOOK UP SPECIFIC WEEK OF ENTRIES */
   const [currYear, setCurrYear] = useState(0);
   const [currQuarter, setCurrQuarter] = useState('q1');
   const [currWeek, setCurrWeek] = useState('w1');
 
+  /** CURRENT ENTRIES */
+  const [entries, setEntries] = (data.length > 0)
+    ? useState(data[currYear][currQuarter][currWeek]) : useState([]);
+
+  useEffect(() => {
+    // TODO: UPDATE LOCAL STORAGE HERE
+  }, [entries]);
   return (
     <div className={styles.container}>
       {showContent
         ? (
           <Content
-            data={fakeData}
+            data={{ val: data, set: setData }}
+            entries={{ val: entries, set: setEntries }}
             year={{ val: currYear, set: setCurrYear }}
             quarter={{ val: currQuarter, set: setCurrQuarter }}
             week={{ val: currWeek, set: setCurrWeek }}
@@ -44,7 +55,7 @@ export default function Main() {
         )
         : (
           <Dash
-            data={fakeData}
+            data={{ val: data, set: setData }}
             changePage={() => setShowContent(true)}
           />
         )}
