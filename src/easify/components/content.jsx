@@ -33,12 +33,12 @@ export default function Content({
         {/* <p className={styles.yearelement}>  INSERT YEAR FROM YEAR CARD HERE </p> */}
         <button type="button" className={styles.settingsbtn}>
           <span>
-            <Image src="/../public/Gear.png" alt="gear" width={14} height={14} />
+            <Image src="/Gear.png" alt="gear" width={14} height={14} />
             Settings
           </span>
         </button>
         <button type="button" id={styles.profilepic} className={styles.profilebtn}>
-          <Image src="/../public/Profile.png" alt="profile picture" width={40} height={40} />
+          <Image src="/Profile.png" alt="profile picture" width={40} height={40} />
         </button>
       </div>
       <div className={styles.header}>
