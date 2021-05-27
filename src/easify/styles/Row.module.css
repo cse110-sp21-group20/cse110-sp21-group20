@@ -1,7 +1,7 @@
 .row {
   width: 100%;
-  padding-bottom: 1rem;
   display: flex;
+  align-items: center;
   box-sizing: border-box;
 }
 
@@ -11,7 +11,7 @@
   width: 100%;
   font-weight: 300;
   font-size: 1.5rem;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.1rem;
   margin-left: 0.8rem;
   letter-spacing: 1.15px;
 }
@@ -36,9 +36,17 @@
 .popup h2 {
   font-weight: 500;
 }
-
 .icon {
-  margin-left: -0.3rem;
+  margin-top: 0.5rem;
+}
+
+.icon[src="/icons/star.svg"] {
+  margin-left: 0.2rem;
+  margin-top: 0.2rem;
+}
+.icon[src="/icons/dots.svg"] {
+  margin-left: 0.15rem;
+  margin-top: 0.3rem;
 }
 
 .icon:hover {
@@ -50,4 +58,21 @@
   opacity: 1;
   font-weight: 300;
   font-size: 1.2rem;
+}
+.popupentry {
+  width: 100%;
+  align-items: center;
+  display: flex;
+}
+
+.popupentry > p {
+  margin-left: 0.3rem;
+  font-size: 1rem;
+  font-weight: 200;
+}
+
+.btypewrap {
+  padding: 0.1rem;
+  display: flex;
+  flex-direction: column;
 }

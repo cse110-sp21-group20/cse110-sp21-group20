@@ -1,4 +1,4 @@
-import {useState, useEffect, useRef} from 'react';
+import { useState } from 'react';
 
 import styles from '../styles/Dash.module.css';
 import models from '../models/models';

@@ -33,13 +33,42 @@ export default function Main() {
   const [currQuarter, setCurrQuarter] = useState('q1');
   const [currWeek, setCurrWeek] = useState('w1');
 
+  // useEffect(() => {
+  //   const oldData = JSON.parse(localStorage.getItem("data"));
+  //   console.log(oldData);
+  //   setData(oldData);
+  // }, []);
   /** CURRENT ENTRIES */
-  const [entries, setEntries] = (data.length > 0)
-    ? useState(data[currYear][currQuarter][currWeek]) : useState([]);
+  const [entries, setEntries] = useState([]);
 
   useEffect(() => {
-    // TODO: UPDATE LOCAL STORAGE HERE
+    const oldData = localStorage.getItem('data');
+    if (oldData) {
+      setData(JSON.parse(oldData));
+      setEntries(JSON.parse(oldData)[currYear][currQuarter][currWeek]);
+    } else {
+      const newYear = {
+        id: Date.now() * Math.random(),
+        year: new Date().getFullYear(),
+        q1: models.week,
+        q2: models.week,
+        q3: models.week,
+        q4: models.week,
+      };
+      setData([newYear]);
+      localStorage.setItem('data', JSON.stringify([newYear]));
+    }
+  }, []);
+
+
+  useEffect(() => {
+    if (data.length > 0) {
+      const newData = data;
+      newData[currYear][currQuarter][currWeek] = [...entries];
+      localStorage.setItem("data", JSON.stringify(newData));
+    }
   }, [entries]);
+
   return (
     <div className={styles.container}>
       {showContent

@@ -11,12 +11,36 @@ export default function EntryCard({ entry, entries }) {
     entries.set(newEntries);
   }
 
-  function updateRow(data, id) {
+  function updateRowText(data, id) {
     const index = entries.val.findIndex((currE) => currE.id === entry.id);
     const rowIndex = entry.rows.findIndex((currRow) => currRow.id === id);
     entry.rows[rowIndex].text = data;
     const newEntries = [...entries.val];
     newEntries[index] = entry;
+    entries.set(newEntries);
+  }
+
+  function updateRowType(data, id) {
+    const index = entries.val.findIndex((currE) => currE.id === entry.id);
+    const rowIndex = entry.rows.findIndex((currRow) => currRow.id === id);
+    entry.rows[rowIndex].type = data;
+    const newEntries = [...entries.val];
+    newEntries[index] = entry;
+    entries.set(newEntries);
+  }
+
+  function moveRowForward(id) {
+    const index = entries.val.findIndex((currE) => currE.id === entry.id);
+    const rowObject = entry.rows[entry.rows.findIndex((currRow) => currRow.id === id)];
+    if (index === 0) {
+      return;
+    }
+    const prevEntry = entries.val[index - 1];
+    entry.rows = entry.rows.filter((currRow) => currRow.id !== id);
+    prevEntry.rows.push(rowObject);
+    const newEntries = [...entries.val];
+    newEntries[index] = entry;
+    newEntries[index - 1] = prevEntry;
     entries.set(newEntries);
   }
 
@@ -31,7 +55,9 @@ export default function EntryCard({ entry, entries }) {
       <div className={styles.rowwrap}>
         {entry.rows.map((row) => (
           <Row
-            updateRow={(data) => updateRow(data, row.id)}
+            updateRowText={(data) => updateRowText(data, row.id)}
+            updateRowType={(data) => updateRowType(data, row.id)}
+            moveRowForward={() => moveRowForward(row.id)}
             key={row.id}
             row={row}
           />
