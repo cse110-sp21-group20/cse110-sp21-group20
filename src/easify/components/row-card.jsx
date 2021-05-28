@@ -2,9 +2,11 @@
 import { useState, useEffect, useRef } from 'react';
 import styles from '../styles/Row.module.css';
 
-export default function Row({ row, updateRowText, updateRowType, moveRowForward }) {
+// eslint-disable-next-line max-len
+export default function Row({ row, updateRowText, updateRowType, moveRowForward, updateRowComplete, deleteRow }) {
   const [showPopup, setShowPopup] = useState(false);
   const [rowType, setRowType] = useState(row.type);
+  const [rowComplete, setRowComplete] = useState(row.complete);
   const popup = useRef(null);
 
   /** HIDE DROPDOWN WHEN CLICKED OFF */
@@ -24,6 +26,10 @@ export default function Row({ row, updateRowText, updateRowType, moveRowForward 
   useEffect(() => {
     updateRowType(rowType);
   }, [rowType]);
+
+  useEffect(() => {
+    updateRowComplete(rowComplete);
+  }, [rowComplete]);
 
   return (
     <div className={styles.row}>
@@ -49,17 +55,28 @@ export default function Row({ row, updateRowText, updateRowType, moveRowForward 
               </div>
               <div aria-hidden="true" onClick={() => setRowType('ms')} className={styles.popupentry}>
                 <img className={styles.icon} src="/icons/dots.svg" alt="misc icon" />
-                <p>Misc</p>
+                <p>Misc.</p>
               </div>
+            </div>
+            <h2 style={{ marginTop: '0.3rem' }}>BULLET FUNC.</h2>
+            <div className={styles.btypewrap}>
               <div aria-hidden="true" onClick={() => moveRowForward()} className={styles.popupentry}>
                 <img className={styles.icon} src="/icons/next.svg" alt="next icon" />
-                <p>Move Forward</p>
+                <p>Push Forward</p>
+              </div>
+              <div aria-hidden="true" onClick={() => setRowComplete(!rowComplete)} className={styles.popupentry}>
+                <img className={styles.icon} src="/icons/complete.svg" alt="next icon" />
+                <p>Mark Complete</p>
+              </div>
+              <div aria-hidden="true" onClick={() => deleteRow()} className={styles.popupentry}>
+                <img className={styles.icon} src="/icons/trashcan.svg" alt="next icon" />
+                <p>Delete</p>
               </div>
             </div>
           </div>
         ) : null}
       </div>
-      <input value={row.text} onInput={(e) => updateRowText(e.target.value)} />
+      <input style={rowComplete ? { textDecoration: 'line-through' } : null} value={row.text} onInput={(e) => updateRowText(e.target.value)} />
     </div>
   );
 }

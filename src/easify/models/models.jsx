@@ -2,6 +2,7 @@ const emptyRow = {
   id: Date.now() * Math.random(),
   type: 'hw',
   text: '',
+  complete: false,
 };
 
 const emptyEntry = {

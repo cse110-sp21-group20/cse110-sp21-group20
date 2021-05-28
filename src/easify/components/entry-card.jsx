@@ -5,7 +5,7 @@ import Row from './row-card';
 export default function EntryCard({ entry, entries }) {
   function addRow() {
     const index = entries.val.findIndex((currE) => currE.id === entry.id);
-    entry.rows = [...entry.rows, { id: Date.now() * Math.random(), type: 'hw', text: '' }];
+    entry.rows = [...entry.rows, { id: Date.now() * Math.random(), type: 'hw', text: '', complete: false }];
     const newEntries = [...entries.val];
     newEntries[index] = entry;
     entries.set(newEntries);
@@ -44,6 +44,22 @@ export default function EntryCard({ entry, entries }) {
     entries.set(newEntries);
   }
 
+  function deleteRow(id) {
+    const index = entries.val.findIndex((currE) => currE.id === entry.id);
+    entry.rows = entry.rows.filter((currRow) => currRow.id !== id);
+    const newEntries = [...entries.val];
+    newEntries[index] = entry;
+    entries.set(newEntries);
+  }
+
+  function updateRowComplete(data, id) {
+    const index = entries.val.findIndex((currE) => currE.id === entry.id);
+    entry.rows[entry.rows.findIndex((currRow) => currRow.id === id)].complete = data;
+    const newEntries = [...entries.val];
+    newEntries[index] = entry;
+    entries.set(newEntries);
+  }
+
   function deleteEntry() {
     entries.set(entries.val.filter((currE) => currE.id !== entry.id));
   }
@@ -58,6 +74,8 @@ export default function EntryCard({ entry, entries }) {
             updateRowText={(data) => updateRowText(data, row.id)}
             updateRowType={(data) => updateRowType(data, row.id)}
             moveRowForward={() => moveRowForward(row.id)}
+            deleteRow={() => deleteRow(row.id)}
+            updateRowComplete={(data) => updateRowComplete(data, row.id)}
             key={row.id}
             row={row}
           />

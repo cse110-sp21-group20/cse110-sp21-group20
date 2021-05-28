@@ -3,8 +3,7 @@
 import Image from 'next/image';
 import styles from '../styles/Content.module.css';
 import EntryCard from './entry-card';
-import Image from 'next/image'
-import week from './week';
+import WeekCard from './week';
 
 /**
  * @file This file will contain all necessary UI+Implementation
@@ -22,7 +21,6 @@ import week from './week';
 /* DELETE LINE BELOW WHEN YEAR, WEEK, AND QUARTER ARE ALL BEING USED */
 // eslint-disable-next-line no-unused-vars
 export default function Content({ changePage, year, week, quarter, entries }) {
-
   return (
     <div className={styles.wrap}>
       {/** HEADER: YEAR, SETTINGS, PROFILE, QUARTERS, PREVIOUS */}
@@ -70,15 +68,10 @@ export default function Content({ changePage, year, week, quarter, entries }) {
         <div className="line" />
       </div>
       <div className={styles.main}>
-        {/*INDEX OF WEEKS*/}
+        {/* INDEX OF WEEKS */}
         <div className={styles.index}>
-          {/*all week buttons currently just go back to previous page */}
-        <button className={styles.indexItem} type="button" onClick={() => {
-          week.set('wk1');
-          <week
-            week={week}
-          />
-        }}>
+          {/* all week buttons currently just go back to previous page */}
+          <button className={styles.indexItem} type="button" onClick={() => week.set('w1')}>
             Week 1
           </button>
           <button className={styles.indexItem} type="button" onClick={() => changePage()}>
@@ -112,7 +105,7 @@ export default function Content({ changePage, year, week, quarter, entries }) {
             Week 11
           </button>
         </div>
-      <div className={styles.entrieswrap}>
+        <div className={styles.entrieswrap}>
           {entries.val.map((entry) => (
             <EntryCard key={entry.id} entries={entries} entry={entry} />
           ))}
