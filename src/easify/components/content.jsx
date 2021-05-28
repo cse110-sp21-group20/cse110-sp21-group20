@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 // import { useState } from 'react';
+import Image from 'next/image';
 import styles from '../styles/Content.module.css';
 import EntryCard from './entry-card';
-import Image from 'next/image'
 
 /**
  * @file This file will contain all necessary UI+Implementation
@@ -29,12 +29,18 @@ export default function Content({
   return (
     <div className={styles.wrap}>
       {/** HEADER: YEAR, SETTINGS, PROFILE, QUARTERS, PREVIOUS */}
-      <div className={styles.topheader}> 
-        {/*<p className={styles.yearelement}>  INSERT YEAR FROM YEAR CARD HERE </p>*/}
-        <button className={styles.settingsbtn}><span><Image src={'/../public/Gear.png'} alt="gear" width={14} height={14}/> Settings</span> </button>
-        <button id={styles.profilepic} className={styles.profilebtn}><Image src={'/../public/Profile.png'} alt="profile picture"  width={40} height={40}/></button>
-      </div> 
-
+      <div className={styles.topheader}>
+        {/* <p className={styles.yearelement}>  INSERT YEAR FROM YEAR CARD HERE </p> */}
+        <button type="button" className={styles.settingsbtn}>
+          <span>
+            <Image src="/Gear.png" alt="gear" width={14} height={14} />
+            Settings
+          </span>
+        </button>
+        <button type="button" id={styles.profilepic} className={styles.profilebtn}>
+          <Image src="/Profile.png" alt="profile picture" width={40} height={40} />
+        </button>
+      </div>
       <div className={styles.header}>
         <button
           className={styles.backbtn}
@@ -45,7 +51,7 @@ export default function Content({
         </button>
 
         {/** QUARTER HEADERS */}
-        <div className={styles.quarterheader}> 
+        <div className={styles.quarterheader}>
           {/**
            * TO DO
            * - figure out where buttons lead to
@@ -65,11 +71,11 @@ export default function Content({
           </button>
           <button className={styles.qtrbtn} type="button">
             Notes
-          </button> 
+          </button>
         </div>
-        <div className="line"></div> {/* wanted a dotted line at the bottom of the header */}
+        {/* wanted a dotted line at the bottom of the header */}
+        <div className="line" />
       </div>
-      
       <div className={styles.main}>
         <div className={styles.index} />
         <div className={styles.entrieswrap}>
