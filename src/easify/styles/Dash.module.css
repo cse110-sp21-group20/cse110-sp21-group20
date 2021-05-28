@@ -7,8 +7,7 @@
 }
 
 .welcome,
-.welcomeh,
-.header {
+.welcomeh {
   display: flex;
   width: 100%;
   height: 5rem;
@@ -19,33 +18,15 @@
   background-color: var(--color-white);
 }
 
-.popup {
-  width: 14rem;
-  border-radius: 9px;
-  background-color: var(--color-gray);
-  position: absolute;
-  right: 1rem;
-  box-shadow: 0px 4px 4px 0px #00000040;
+.resetjwrap {
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
-  z-index: 10;
-  padding: 0.7rem;
+  width: 100%;
+  height: 100%;
+  align-items: center;
 }
 
-.popup > p {
-  font-weight: 400;
-  cursor: pointer;
-  user-select: none;
-}
-
-.settingsbtn {
-  font-weight: 500;
-  font-size: 1.1rem;
-  cursor: pointer;
-  user-select: none;
-}
-
+.welcomeh,
 .welcome {
   height: 30rem;
   flex-direction: column-reverse;
@@ -56,54 +37,6 @@
 
 .welcomeh {
   filter: blur(3px);
-  height: 30rem;
-  flex-direction: column-reverse;
-  align-items: center;
-  color: var(--color-black);
-  user-select: none;
-}
-
-.warning {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  width: 80%;
-  height: 80vh;
-  opacity: 0.8;
-  z-index: 5;
-}
-
-.warnbtnwrap {
-  display: flex;
-  width: 17.3rem;
-  justify-content: space-evenly;
-}
-
-.warnbtnwrap > p {
-  font-size: 1.8rem;
-  font-weight: 800;
-  padding: 0.8rem;
-  background-color: var(--color-hazard);
-  border-radius: 12px;
-  color: var(--color-white);
-  cursor: pointer;
-  user-select: none;
-}
-
-.warnbtnwrap > p[id="warnno"] {
-  background-color: var(--color-green);
-}
-
-.warning > p {
-  font-size: 2.3rem;
-  font-weight: 800;
-  padding: 1rem;
-  background-color: var(--color-black);
-  color: var(--color-white);
-  border-radius: 12px;
-  margin-bottom: 1rem;
 }
 
 .welcome h1,
@@ -127,11 +60,33 @@
   margin-top: 6rem;
   flex-wrap: wrap;
   max-width: 50rem;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .mainh {
   filter: blur(3px);
+}
+
+.mainh::-webkit-scrollbar,
+.main::-webkit-scrollbar {
+  width: 20px;
+}
+
+.mainh::-webkit-scrollbar-track,
+.main::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.mainh::-webkit-scrollbar-thumb,
+.main::-webkit-scrollbar-thumb {
+  background-color: var(--color-gray);
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+.main::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-green);
 }
 
 .newyearbtnh,
@@ -173,4 +128,8 @@
 .newyearbtn > img {
   width: 16px;
   width: 16px;
+}
+
+.plusimg{
+  user-select: none;
 }
