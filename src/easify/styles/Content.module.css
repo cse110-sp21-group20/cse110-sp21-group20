@@ -16,16 +16,15 @@
   align-items: center;
 }
 
-.settingsbtn { 
+.settingsbtn {
   width: 9rem;
 }
 
-.settingsbtn span { 
-  display:flex;
+.settingsbtn span {
+  display: flex;
   flex-direction: row;
   justify-content: center;
 }
-
 
 .topheader {
   display: flex;
@@ -37,25 +36,22 @@
 .index {
   width: 16rem;
   height: 100%;
-<<<<<<< HEAD
   background-color: var(--color-white);
 }
 
 .indexItem {
-  width: 150px;
-  height: 42px;
+  width: 144px;
+  height: 50px;
   font-weight: 500;
   font-size: 16px;
   position: relative;
   border: 0;
-  padding: 0;
-  margin-top: 22px;
   background-color: var(--color-white);
   list-style-type: none;
-=======
-  flex-shrink: 0;
-  background-color: red;
->>>>>>> d485ff5c3e83d395dec2e9f7bb32e9a86975d3ca
+}
+
+.indexItem:hover {
+  background-color: var(--color-green);
 }
 
 .entrieswrap {
@@ -95,8 +91,7 @@
   transform: translate(0px, 1px);
 }
 
-
-#profilepic { 
+#profilepic {
   margin-left: 5%;
 }
 
@@ -118,16 +113,21 @@
 }
 
 .line {
-  margin:5px 0;
-  height:2px;
-  background:
-  repeating-linear-gradient(to right,#E3E5E5 0,#E3E5E5 5px,transparent 5px,transparent 7px)
-    /*5px red then 2px transparent -> repeat this!*/
+  margin: 5px 0;
+  height: 2px;
+  background: repeating-linear-gradient(
+    to right,
+    #e3e5e5 0,
+    #e3e5e5 5px,
+    transparent 5px,
+    transparent 7px
+  );
+  /*5px red then 2px transparent -> repeat this!*/
 }
 
 /* QUARTER HEADER */
 .quarterheader {
-  display: flex; 
+  display: flex;
   margin-left: auto;
   margin-right: auto;
   width: 50%;

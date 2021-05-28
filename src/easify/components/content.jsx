@@ -3,6 +3,7 @@
 import styles from '../styles/Content.module.css';
 import EntryCard from './entry-card';
 import Image from 'next/image'
+import week from './week';
 
 /**
  * @file This file will contain all necessary UI+Implementation
@@ -18,20 +19,9 @@ import Image from 'next/image'
  * @function
  */
 /* DELETE LINE BELOW WHEN YEAR, WEEK, AND QUARTER ARE ALL BEING USED */
-<<<<<<< HEAD
 // eslint-disable-next-line no-unused-vars
-export default function Content({ changePage, year, week, quarter }) {
+export default function Content({ changePage, year, week, quarter, entries }) {
 
-=======
-export default function Content({
-  entries,
-  data,
-  changePage,
-  year,
-  week,
-  quarter,
-}) {
->>>>>>> d485ff5c3e83d395dec2e9f7bb32e9a86975d3ca
   return (
     <div className={styles.wrap}>
       {/** HEADER: YEAR, SETTINGS, PROFILE, QUARTERS, PREVIOUS */}
@@ -42,15 +32,7 @@ export default function Content({
       </div> 
 
       <div className={styles.header}>
-<<<<<<< HEAD
         <button className={styles.backbtn} id="wk1" type="button" onClick={() => changePage()}>
-=======
-        <button
-          className={styles.backbtn}
-          type="button"
-          onClick={() => changePage()}
-        >
->>>>>>> d485ff5c3e83d395dec2e9f7bb32e9a86975d3ca
           Go Back
         </button>
 
@@ -81,10 +63,15 @@ export default function Content({
       </div>
       
       <div className={styles.main}>
-<<<<<<< HEAD
+        {/*INDEX OF WEEKS*/}
         <div className={styles.index}>
           {/*all week buttons currently just go back to previous page */}
-        <button className={styles.indexItem} type="button" onClick={() => changePage()}>
+        <button className={styles.indexItem} type="button" onClick={() => {
+          week.set('wk1');
+          <week
+            week={week}
+          />
+        }}>
             Week 1
           </button>
           <button className={styles.indexItem} type="button" onClick={() => changePage()}>
@@ -118,9 +105,7 @@ export default function Content({
             Week 11
           </button>
         </div>
-=======
-        <div className={styles.index} />
-        <div className={styles.entrieswrap}>
+      <div className={styles.entrieswrap}>
           {entries.val.map((entry) => (
             <EntryCard key={entry.id} entries={entries} entry={entry} />
           ))}
@@ -135,7 +120,6 @@ export default function Content({
         >
           Create New Entry
         </button>
->>>>>>> d485ff5c3e83d395dec2e9f7bb32e9a86975d3ca
       </div>
     </div>
   );
