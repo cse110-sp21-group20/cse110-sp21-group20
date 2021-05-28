@@ -33,11 +33,6 @@ export default function Main() {
   const [currQuarter, setCurrQuarter] = useState('q1');
   const [currWeek, setCurrWeek] = useState('w1');
 
-  // useEffect(() => {
-  //   const oldData = JSON.parse(localStorage.getItem("data"));
-  //   console.log(oldData);
-  //   setData(oldData);
-  // }, []);
   /** CURRENT ENTRIES */
   const [entries, setEntries] = useState([]);
 
@@ -60,12 +55,11 @@ export default function Main() {
     }
   }, []);
 
-
   useEffect(() => {
     if (data.length > 0) {
       const newData = data;
       newData[currYear][currQuarter][currWeek] = [...entries];
-      localStorage.setItem("data", JSON.stringify(newData));
+      localStorage.setItem('data', JSON.stringify(newData));
     }
   }, [entries]);
 
