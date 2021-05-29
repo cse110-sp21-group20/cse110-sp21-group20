@@ -1,10 +1,8 @@
-import styles from '../styles/Content.module.css'
+import styles from '../styles/Content.module.css';
 
-export default function week ({ week }) {
-   
-    return (
-        <div className={styles.indexItem}>
-            
-        </div>
-    )
+// eslint-disable-next-line no-unused-vars
+export default function WeekCard({ week }) {
+  return (
+    <div className={styles.indexItem} />
+  );
 }
