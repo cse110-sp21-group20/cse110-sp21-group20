@@ -103,7 +103,7 @@ export default function Content({ changePage, year, week, quarter, entries }) {
         <div className="line" />
       </div>
       <div className={styles.main}>
-        {/*INDEX OF WEEKS*/}
+        {/* INDEX OF WEEKS */}
         <div className={styles.index}>
           {/*all week buttons currently just go back to previous page */}
           <button
