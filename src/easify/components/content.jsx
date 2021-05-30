@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import styles from '../styles/Content.module.css';
 import EntryCard from './entry-card';
+import WeekCard from './week';
 
 /**
  * @file This file will contain all necessary UI+Implementation
@@ -18,14 +19,8 @@ import EntryCard from './entry-card';
  * @function
  */
 /* DELETE LINE BELOW WHEN YEAR, WEEK, AND QUARTER ARE ALL BEING USED */
-export default function Content({
-  entries,
-  data,
-  changePage,
-  year,
-  week,
-  quarter,
-}) {
+// eslint-disable-next-line no-unused-vars
+export default function Content({ changePage, year, week, quarter, entries }) {
   return (
     <div className={styles.wrap}>
       {/** HEADER: YEAR, SETTINGS, PROFILE, QUARTERS, PREVIOUS */}
@@ -42,11 +37,7 @@ export default function Content({
         </button>
       </div>
       <div className={styles.header}>
-        <button
-          className={styles.backbtn}
-          type="button"
-          onClick={() => changePage()}
-        >
+        <button className={styles.backbtn} id="wk1" type="button" onClick={() => changePage()}>
           Go Back
         </button>
 
@@ -77,7 +68,43 @@ export default function Content({
         <div className="line" />
       </div>
       <div className={styles.main}>
-        <div className={styles.index} />
+        {/* INDEX OF WEEKS */}
+        <div className={styles.index}>
+          {/* all week buttons currently just go back to previous page */}
+          <button className={styles.indexItem} type="button" onClick={() => week.set('w1')}>
+            Week 1
+          </button>
+          <button className={styles.indexItem} type="button" onClick={() => changePage()}>
+            Week 2
+          </button>
+          <button className={styles.indexItem} type="button" onClick={() => changePage()}>
+            Week 3
+          </button>
+          <button className={styles.indexItem} type="button" onClick={() => changePage()}>
+            Week 4
+          </button>
+          <button className={styles.indexItem} type="button" onClick={() => changePage()}>
+            Week 5
+          </button>
+          <button className={styles.indexItem} type="button" onClick={() => changePage()}>
+            Week 6
+          </button>
+          <button className={styles.indexItem} type="button" onClick={() => changePage()}>
+            Week 7
+          </button>
+          <button className={styles.indexItem} type="button" onClick={() => changePage()}>
+            Week 8
+          </button>
+          <button className={styles.indexItem} type="button" onClick={() => changePage()}>
+            Week 9
+          </button>
+          <button className={styles.indexItem} type="button" onClick={() => changePage()}>
+            Week 10
+          </button>
+          <button className={styles.indexItem} type="button" onClick={() => changePage()}>
+            Week 11
+          </button>
+        </div>
         <div className={styles.entrieswrap}>
           {entries.val.map((entry) => (
             <EntryCard key={entry.id} entries={entries} entry={entry} />
