@@ -38,7 +38,7 @@ export default function Main() {
 
   useEffect(() => {
     const oldData = localStorage.getItem('data');
-    if (oldData) {
+    if (oldData && JSON.parse(oldData).length > 0) {
       setData(JSON.parse(oldData));
       setEntries(JSON.parse(oldData)[currYear][currQuarter][currWeek]);
     } else {
@@ -100,6 +100,15 @@ export default function Main() {
   }, []);
 
   useEffect(() => {
+    localStorage.setItem('data', JSON.stringify(data));
+    if (data.length === 0) {
+      setEntries([]);
+    } else {
+      setEntries(data[currYear][currQuarter][currWeek]);
+    }
+  }, [data]);
+
+  useEffect(() => {
     if (data.length > 0) {
       const newData = data;
       newData[currYear][currQuarter][currWeek] = [...entries];
@@ -108,6 +117,7 @@ export default function Main() {
   }, [entries]);
 
   useEffect(() => {
+    console.log(currYear, currQuarter, currWeek);
     if (data.length > 0) {
       const showEntries = data[currYear][currQuarter][currWeek];
       if (showEntries) {
@@ -131,6 +141,7 @@ export default function Main() {
         <Dash
           data={{ val: data, set: setData }}
           changePage={() => setShowContent(true)}
+          setYear={setCurrYear}
         />
       )}
     </div>

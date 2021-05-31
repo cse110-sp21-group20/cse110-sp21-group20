@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
-// import { useState } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
+import Settings from './settings';
 import styles from '../styles/Content.module.css';
 import EntryCard from './entry-card';
 
@@ -19,19 +20,28 @@ import EntryCard from './entry-card';
  */
 /* DELETE LINE BELOW WHEN YEAR, WEEK, AND QUARTER ARE ALL BEING USED */
 // eslint-disable-next-line no-unused-vars
-export default function Content({ changePage, year, week, quarter, entries }) {
+export default function Content({ changePage, year, week, quarter, entries, data }) {
+  const [resetJournal, setResetJournal] = useState(false);
+
   return (
     <div className={styles.wrap}>
       {/** HEADER: YEAR, SETTINGS, PROFILE, QUARTERS, PREVIOUS */}
       <div className={styles.topheader}>
         {/* <p className={styles.yearelement}>  INSERT YEAR FROM YEAR CARD HERE </p> */}
-        <button type="button" className={styles.settingsbtn}>
+        {/* <Settings
+          setEntries={entries.set}
+          data={{ val: data, set: data.set }}
+          rj={resetJournal}
+          setrj={() => setResetJournal(!resetJournal)}
+          changePage={() => changePage()}
+        /> */}
+        {/* <button type="button" className={styles.settingsbtn}>
           <span>
             <Image src="/Gear.png" alt="gear" width={14} height={14} />
             Settings
           </span>
-        </button>
-        <button
+        </button> */}
+        {/* <button
           type="button"
           id={styles.profilepic}
           className={styles.profilebtn}
@@ -42,7 +52,7 @@ export default function Content({ changePage, year, week, quarter, entries }) {
             width={40}
             height={40}
           />
-        </button>
+        </button> */}
       </div>
       <div className={styles.header}>
         <button
@@ -52,7 +62,7 @@ export default function Content({ changePage, year, week, quarter, entries }) {
           onClick={() => changePage()}
         >
           <img src="/icons/larrow.svg" alt="left arrow" />
-          Back to previous
+          <p> Back to previous </p>
         </button>
 
         {/** QUARTER HEADERS */}
