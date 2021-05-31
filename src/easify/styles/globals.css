@@ -26,6 +26,8 @@ body {
   --color-white: white;
   --color-black: #130f26;
   --color-gray: #f7f9fa;
+  --color-gray-dark: #c6cacc;
   --color-green: #5ebd96;
   --color-gray-select: hsl(200, 23%, 96%);
+  --color-green-select: rgb(92, 188, 148, 0.25);
 }

@@ -1,9 +1,8 @@
 /* eslint-disable no-unused-vars */
 // import { useState } from 'react';
-import Image from 'next/image';
-import styles from '../styles/Content.module.css';
-import EntryCard from './entry-card';
-import WeekCard from './week';
+import Image from "next/image";
+import styles from "../styles/Content.module.css";
+import EntryCard from "./entry-card";
 
 /**
  * @file This file will contain all necessary UI+Implementation
@@ -32,13 +31,28 @@ export default function Content({ changePage, year, week, quarter, entries }) {
             Settings
           </span>
         </button>
-        <button type="button" id={styles.profilepic} className={styles.profilebtn}>
-          <Image src="/Profile.png" alt="profile picture" width={40} height={40} />
+        <button
+          type="button"
+          id={styles.profilepic}
+          className={styles.profilebtn}
+        >
+          <Image
+            src="/Profile.png"
+            alt="profile picture"
+            width={40}
+            height={40}
+          />
         </button>
       </div>
       <div className={styles.header}>
-        <button className={styles.backbtn} id="wk1" type="button" onClick={() => changePage()}>
-          Go Back
+        <button
+          className={styles.backbtn}
+          id="wk1"
+          type="button"
+          onClick={() => changePage()}
+        >
+          <img src="/icons/larrow.svg" />
+          Back to previous
         </button>
 
         {/** QUARTER HEADERS */}
@@ -48,20 +62,41 @@ export default function Content({ changePage, year, week, quarter, entries }) {
            * - figure out where buttons lead to
            * - ui of the overall header
            */}
-          <button className={styles.qtrbtn} type="button">
+          <button
+            type="button"
+            onClick={() => quarter.set("q1")}
+            className={
+              quarter.val === "q1" ? styles.qtrbtnselect : styles.qtrbtn
+            }
+          >
             Fall
           </button>
-          <button className={styles.qtrbtn} type="button">
+          <button
+            type="button"
+            onClick={() => quarter.set("q2")}
+            className={
+              quarter.val === "q2" ? styles.qtrbtnselect : styles.qtrbtn
+            }
+          >
             Winter
           </button>
-          <button className={styles.qtrbtn} type="button">
+          <button
+            type="button"
+            onClick={() => quarter.set("q3")}
+            className={
+              quarter.val === "q3" ? styles.qtrbtnselect : styles.qtrbtn
+            }
+          >
             Spring
           </button>
-          <button className={styles.qtrbtn} type="button">
+          <button
+            type="button"
+            onClick={() => quarter.set("q4")}
+            className={
+              quarter.val === "q4" ? styles.qtrbtnselect : styles.qtrbtn
+            }
+          >
             Summer
-          </button>
-          <button className={styles.qtrbtn} type="button">
-            Notes
           </button>
         </div>
         {/* wanted a dotted line at the bottom of the header */}
@@ -70,38 +105,109 @@ export default function Content({ changePage, year, week, quarter, entries }) {
       <div className={styles.main}>
         {/* INDEX OF WEEKS */}
         <div className={styles.index}>
-          {/* all week buttons currently just go back to previous page */}
-          <button className={styles.indexItem} type="button" onClick={() => week.set('w1')}>
+          {/*all week buttons currently just go back to previous page */}
+          <button
+            className={
+              week.val === "w1" ? styles.filledIndexItem : styles.indexItem
+            }
+            type="button"
+            onClick={() => {
+              week.set("w1");
+            }}
+          >
             Week 1
           </button>
-          <button className={styles.indexItem} type="button" onClick={() => changePage()}>
+          <button
+            className={
+              week.val === "w2" ? styles.filledIndexItem : styles.indexItem
+            }
+            type="button"
+            onClick={() => {
+              week.set("w2");
+            }}
+          >
             Week 2
           </button>
-          <button className={styles.indexItem} type="button" onClick={() => changePage()}>
+          <button
+            className={
+              week.val === "w3" ? styles.filledIndexItem : styles.indexItem
+            }
+            type="button"
+            onClick={() => {
+              week.set("w3");
+            }}
+          >
             Week 3
           </button>
-          <button className={styles.indexItem} type="button" onClick={() => changePage()}>
+          <button
+            className={
+              week.val === "w4" ? styles.filledIndexItem : styles.indexItem
+            }
+            type="button"
+            onClick={() => week.set("w4")}
+          >
             Week 4
           </button>
-          <button className={styles.indexItem} type="button" onClick={() => changePage()}>
+          <button
+            className={
+              week.val === "w5" ? styles.filledIndexItem : styles.indexItem
+            }
+            type="button"
+            onClick={() => week.set("w5")}
+          >
             Week 5
           </button>
-          <button className={styles.indexItem} type="button" onClick={() => changePage()}>
+          <button
+            className={
+              week.val === "w6" ? styles.filledIndexItem : styles.indexItem
+            }
+            type="button"
+            onClick={() => week.set("w6")}
+          >
             Week 6
           </button>
-          <button className={styles.indexItem} type="button" onClick={() => changePage()}>
+          <button
+            className={
+              week.val === "w7" ? styles.filledIndexItem : styles.indexItem
+            }
+            type="button"
+            onClick={() => week.set("w7")}
+          >
             Week 7
           </button>
-          <button className={styles.indexItem} type="button" onClick={() => changePage()}>
+          <button
+            className={
+              week.val === "w8" ? styles.filledIndexItem : styles.indexItem
+            }
+            type="button"
+            onClick={() => week.set("w8")}
+          >
             Week 8
           </button>
-          <button className={styles.indexItem} type="button" onClick={() => changePage()}>
+          <button
+            className={
+              week.val === "w9" ? styles.filledIndexItem : styles.indexItem
+            }
+            type="button"
+            onClick={() => week.set("w9")}
+          >
             Week 9
           </button>
-          <button className={styles.indexItem} type="button" onClick={() => changePage()}>
+          <button
+            className={
+              week.val === "w10" ? styles.filledIndexItem : styles.indexItem
+            }
+            type="button"
+            onClick={() => week.set("w10")}
+          >
             Week 10
           </button>
-          <button className={styles.indexItem} type="button" onClick={() => changePage()}>
+          <button
+            className={
+              week.val === "w11" ? styles.filledIndexItem : styles.indexItem
+            }
+            type="button"
+          >
             Week 11
           </button>
         </div>
@@ -112,10 +218,12 @@ export default function Content({ changePage, year, week, quarter, entries }) {
         </div>
         <button
           type="button"
-          onClick={() => entries.set([
-            { id: Date.now(), rows: [], title: new Date().toDateString() },
-            ...entries.val,
-          ])}
+          onClick={() =>
+            entries.set([
+              { id: Date.now(), rows: [], title: new Date().toDateString() },
+              ...entries.val,
+            ])
+          }
           className={styles.addbtn}
         >
           Create New Entry
