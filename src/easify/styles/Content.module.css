@@ -37,7 +37,7 @@
 .topheader {
   display: flex;
   justify-content: space-between;
-  height: 4rem;
+  height: 2rem;
   margin-left: auto;
   padding: 0.5%;
 }
@@ -118,8 +118,12 @@
 .backbtn {
   cursor: pointer;
   display: flex;
-  height: 56px;
-  width: 184px;
+  width: 12rem;
+  height: 2rem;
+  flex-shrink: 0;
+  align-items: center;
+  color: var(--color-gray-dark);
+  justify-content: space-evenly;
   margin-left: 1rem;
   border-radius: 3px;
   background-color: var(--color-white);
@@ -127,12 +131,13 @@
 }
 
 .backbtn > img {
+  vertical-align: middle;
   width: 1rem;
   height: 1rem;
 }
 
 .line {
-  margin: 5px 0;
+  margin: 2px 0;
   height: 2px;
   background: repeating-linear-gradient(
     to right,
@@ -150,7 +155,6 @@
   margin-left: auto;
   margin-right: auto;
   justify-content: space-evenly;
-  width: 50%;
   border-bottom: 1px dotted var(--color-gray-dark);
 }
 
@@ -158,16 +162,18 @@
 .qtrbtn {
   cursor: pointer;
   background-color: white;
+  color: var(--color-gray-dark);
   flex-shrink: 0;
   border: 0;
-  height: 45px;
-  width: 10rem;
+  height: 3.5rem;
+  width: 9rem;
   display: inline-block;
   text-align: center;
 }
 
 .qtrbtnselect {
   border-radius: 5px;
+  color: var(--color-black);
   border-left: 1px solid var(--color-gray-dark);
   border-top: 1px solid var(--color-gray-dark);
   border-right: 1px solid var(--color-gray-dark);

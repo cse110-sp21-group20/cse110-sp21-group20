@@ -60,13 +60,25 @@ export default function EntryCard({ entry, entries }) {
     entries.set(newEntries);
   }
 
+  function updateEntryTitle(data) {
+    const index = entries.val.findIndex((currE) => currE.id === entry.id);
+    entry.title = data;
+    const newEntries = [...entries.val];
+    newEntries[index] = entry;
+    entries.set(newEntries);
+  }
+
   function deleteEntry() {
     entries.set(entries.val.filter((currE) => currE.id !== entry.id));
   }
 
   return (
     <div className={styles.card}>
-      <h1 className={styles.title}>{entry.title}</h1>
+      <input
+        className={styles.title}
+        value={entry.title}
+        onInput={(e) => updateEntryTitle(e.target.value)}
+      />
       <img aria-hidden="true" onClick={() => deleteEntry()} className={styles.trashcan} src="/icons/trashcan.svg" alt="trashcan" />
       <div className={styles.rowwrap}>
         {entry.rows.map((row) => (
