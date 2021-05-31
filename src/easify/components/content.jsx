@@ -21,7 +21,7 @@ import EntryCard from "./entry-card";
 // eslint-disable-next-line no-unused-vars
 export default function Content({ changePage, year, week, quarter, entries }) {
   return (
-    <div className={styles.wrap}>
+    <div className={styles.wrap} test>
       {/** HEADER: YEAR, SETTINGS, PROFILE, QUARTERS, PREVIOUS */}
       <div className={styles.topheader}>
         {/* <p className={styles.yearelement}>  INSERT YEAR FROM YEAR CARD HERE </p> */}

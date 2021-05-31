@@ -49,7 +49,7 @@ export default function Settings({data, rj, setrj}){
               Settings
             </p>
             {showPopup ? (
-              <div className={styles.popup}>
+              <div className={styles.popup} data-testid='dropdown'>
                 <p 
                   aria-hidden="true" 
                   onClick={() => {

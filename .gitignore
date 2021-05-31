@@ -1,0 +1,36 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+**/node_modules
+**/.pnp
+**/.pnp.js
+
+# testing
+src/easify/coverage
+
+**/.vscode
+
+# next.js
+**/.next
+src/easify/out
+
+# production
+src/easify/build
+
+# misc
+src/easify/.DS_Store
+src/easify/*.pem
+
+# debug
+src/easify/npm-debug.log*
+src/easify/yarn-debug.log*
+src/easify/yarn-error.log*
+
+# local env files
+src/easify/.env.local
+src/easify/.env.development.local
+src/easify/.env.test.local
+src/easify/.env.production.local
+
+# vercel
+src/easify/.vercel
