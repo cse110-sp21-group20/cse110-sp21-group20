@@ -1,5 +1,5 @@
 .card {
-  background-color: var(--color-gray);
+  background-color: var(--color-white);
   border-radius: 16px;
   display: flex;
   flex-shrink: 0;

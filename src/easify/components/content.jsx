@@ -99,18 +99,18 @@ export default function Content({ changePage, year, week, quarter, entries, data
           >
             Spring
           </button>
-          <button
-            type="button"
-            onClick={() => quarter.set('q4')}
-            className={
-              quarter.val === 'q4' ? styles.qtrbtnselect : styles.qtrbtn
-            }
-          >
-            Summer
-          </button>
         </div>
+        <button
+          type="button"
+          onClick={() => entries.set([
+            { id: Date.now(), rows: [], title: new Date().toDateString() },
+            ...entries.val,
+          ])}
+          className={styles.addbtn}
+        >
+          Create New Entry
+        </button>
         {/* wanted a dotted line at the bottom of the header */}
-        <div className="line" />
       </div>
       <div className={styles.main}>
         {/* INDEX OF WEEKS */}
@@ -216,8 +216,9 @@ export default function Content({ changePage, year, week, quarter, entries, data
               week.val === 'w11' ? styles.filledIndexItem : styles.indexItem
             }
             type="button"
+            onClick={() => week.set('w11')}
           >
-            Week 11
+            Finals Week
           </button>
         </div>
         <div className={styles.entrieswrap}>
@@ -225,16 +226,6 @@ export default function Content({ changePage, year, week, quarter, entries, data
             <EntryCard key={entry.id} entries={entries} entry={entry} />
           ))}
         </div>
-        <button
-          type="button"
-          onClick={() => entries.set([
-            { id: Date.now(), rows: [], title: new Date().toDateString() },
-            ...entries.val,
-          ])}
-          className={styles.addbtn}
-        >
-          Create New Entry
-        </button>
       </div>
     </div>
   );

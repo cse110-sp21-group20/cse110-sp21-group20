@@ -44,7 +44,7 @@ export default function Main() {
     } else {
       const newYear = {
         id: Date.now() * Math.random(),
-        year: new Date().getFullYear(),
+        year: (new Date().getMonth() < 9) ? new Date().getFullYear() - 1 : new Date().getFullYear(),
         q1: {
           w1: [],
           w2: [],
@@ -56,6 +56,7 @@ export default function Main() {
           w8: [],
           w9: [],
           w10: [],
+          w11: [],
         },
         q2: {
           w1: [],
@@ -68,6 +69,7 @@ export default function Main() {
           w8: [],
           w9: [],
           w10: [],
+          w11: [],
         },
         q3: {
           w1: [],
@@ -80,18 +82,7 @@ export default function Main() {
           w8: [],
           w9: [],
           w10: [],
-        },
-        q4: {
-          w1: [],
-          w2: [],
-          w3: [],
-          w4: [],
-          w5: [],
-          w6: [],
-          w7: [],
-          w8: [],
-          w9: [],
-          w10: [],
+          w11: [],
         },
       };
       setData([newYear]);

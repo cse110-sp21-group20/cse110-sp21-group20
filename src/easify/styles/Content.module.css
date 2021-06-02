@@ -10,10 +10,12 @@
 .header {
   display: flex;
   width: 100%;
-  height: 8rem;
-  min-height: 5rem;
-  background-color: white;
-  align-items: center;
+  height: 4rem;
+  min-height: 4rem;
+  background-color: var(--color-gray);
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 1px solid var(--color-green);
 }
 
 .main {
@@ -22,16 +24,6 @@
   height: 100%;
   position: relative;
   min-height: 0;
-}
-
-.settingsbtn {
-  width: 9rem;
-}
-
-.settingsbtn span {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
 }
 
 .topheader {
@@ -50,10 +42,11 @@
   font-size: 12px;
   position: relative;
   border: 0;
-  background-color: var(--color-white);
+  background-color: var(--color-gray);
   list-style-type: none;
   border-radius: 10px;
   margin-bottom: 0.2rem;
+  flex-shrink: 0;
 }
 
 .indexItem:hover {
@@ -79,14 +72,14 @@
 
 .addbtn {
   border: 0;
-  position: absolute;
   padding-right: 3rem;
   padding-left: 3rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
-  right: 1rem;
-  top: 1rem;
+  margin-bottom: 2rem;
+  margin-right: 0.5rem;
   color: var(--color-green);
+  flex-shrink: 0;
   font-weight: 500;
   font-size: 1.3rem;
   background-color: var(--color-white);
@@ -118,15 +111,19 @@
 .backbtn {
   cursor: pointer;
   display: flex;
-  width: 12rem;
-  height: 2rem;
+  width: 13rem;
+  height: 4rem;
+  box-sizing: border-box;
   flex-shrink: 0;
   align-items: center;
-  color: var(--color-gray-dark);
+  font-weight: 600;
+  color: var(--color-black);
   justify-content: space-evenly;
   margin-left: 1rem;
-  border-radius: 3px;
+  border-radius: 99px;
   background-color: var(--color-white);
+  margin-bottom: 1.7rem;
+  filter: drop-shadow(0px 6px 4px rgba(99, 153, 130, 0.45));
   border: 0;
 }
 
@@ -136,34 +133,22 @@
   height: 1rem;
 }
 
-.line {
-  margin: 2px 0;
-  height: 2px;
-  background: repeating-linear-gradient(
-    to right,
-    #e3e5e5 0,
-    #e3e5e5 5px,
-    transparent 5px,
-    transparent 7px
-  );
-  /*5px red then 2px transparent -> repeat this!*/
+.backbtn:active {
+  transform: translate(0px, 1px);
 }
 
 /* QUARTER HEADER */
 .quarterheader {
   display: flex;
-  margin-left: auto;
-  margin-right: auto;
+  width: 50%;
   justify-content: space-evenly;
-  border-bottom: 1px dotted var(--color-gray-dark);
 }
 
 .qtrbtnselect,
 .qtrbtn {
   cursor: pointer;
-  background-color: white;
+  background-color: var(--color-gray);
   color: var(--color-gray-dark);
-  flex-shrink: 0;
   border: 0;
   height: 3.5rem;
   width: 9rem;
@@ -173,11 +158,12 @@
 
 .qtrbtnselect {
   border-radius: 5px;
+  background-color: var(--color-white);
   color: var(--color-black);
-  border-left: 1px solid var(--color-gray-dark);
-  border-top: 1px solid var(--color-gray-dark);
-  border-right: 1px solid var(--color-gray-dark);
-  border-bottom: 0;
+  border-left: 1px solid var(--color-green);
+  border-top: 1px solid var(--color-green);
+  border-right: 1px solid var(--color-green);
+  z-index: 10;
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
 }
@@ -189,9 +175,13 @@
 }
 
 .index {
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  justify-content: flex-start;
   width: 14rem;
   height: 100%;
   box-sizing: border-box;
   padding: 0.5rem;
-  background-color: var(--color-white);
+  background-color: var(--color-gray);
 }
