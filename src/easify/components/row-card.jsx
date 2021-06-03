@@ -76,7 +76,7 @@ export default function Row({ row, updateRowText, updateRowType, moveRowForward,
           </div>
         ) : null}
       </div>
-      <input style={rowComplete ? { textDecoration: 'line-through' } : null} value={row.text} onInput={(e) => updateRowText(e.target.value)} />
+      <input style={rowComplete ? { textDecoration: 'line-through' } : null} value={row.text} onInput={(e) => updateRowText(e.target.value)} data-testid='rowInput' />
     </div>
   );
 }
