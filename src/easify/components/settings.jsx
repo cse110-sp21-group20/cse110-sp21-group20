@@ -47,6 +47,7 @@ export default function Settings({ rj, setrj }) {
             onClick={() => setShowPopup(!showPopup)}
             ref={popupSettings}
           >
+            <img className={styles.gear} src="/icons/gear.svg" alt="gear" />
             Settings
           </p>
           {showPopup ? (

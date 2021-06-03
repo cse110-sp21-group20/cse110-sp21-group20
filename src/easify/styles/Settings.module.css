@@ -13,6 +13,8 @@
 .settingsbtn {
   font-weight: 600;
   font-size: 1.1rem;
+  display: flex;
+  justify-content: space-evenly;
   cursor: pointer;
   user-select: none;
   position: absolute;

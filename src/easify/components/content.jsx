@@ -108,6 +108,7 @@ export default function Content({ changePage, year, week, quarter, entries, data
           ])}
           className={styles.addbtn}
         >
+          <img className={styles.plusicon} src="/icons/plussign.svg" alt="plus" />
           Create New Entry
         </button>
         {/* wanted a dotted line at the bottom of the header */}
