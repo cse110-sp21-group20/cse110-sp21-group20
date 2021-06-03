@@ -108,7 +108,6 @@ export default function Main() {
   }, [entries]);
 
   useEffect(() => {
-    console.log(currYear, currQuarter, currWeek);
     if (data.length > 0) {
       const showEntries = data[currYear][currQuarter][currWeek];
       if (showEntries) {
