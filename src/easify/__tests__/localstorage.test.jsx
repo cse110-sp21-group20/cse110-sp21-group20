@@ -1,8 +1,9 @@
-/* eslint-disable no-shadow */
-/* eslint-disable no-unused-vars */
 /**
  * @jest-environment jsdom
  */
+/* eslint-disable no-shadow */
+/* eslint-disable no-unused-vars */
+
 import { cleanup, findByAltText, findByDisplayValue, findByTestId, fireEvent, getByAltText, getByDisplayValue, getByTestId, queryByDisplayValue, render, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react';
 import Main from '../pages/index';
 // Data format
@@ -90,7 +91,7 @@ describe('Local Storage Unit Tests', () => {
     const data2 = JSON.parse(localStorage.getItem('data'))['0'];
     expect(data2.q1.w1.length).toBe(0);
   });
-  it('Bullets are saved with the appropriate type', async () => {
+  it.skip('Bullets are saved with the appropriate type', async () => {
     // Adding an entry
     // eslint-disable-next-line max-len
     const { getByText, findByText, findByDisplayValue, getByTestId, findByAltText } = render(<Main />);

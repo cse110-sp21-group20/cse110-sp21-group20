@@ -1,7 +1,8 @@
-/* eslint-disable no-unused-vars */
 /**
  * @jest-environment jsdom
  */
+/* eslint-disable no-unused-vars */
+
 import { useState } from 'react';
 import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import EntryCard from '../components/entry-card';
