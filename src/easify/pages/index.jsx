@@ -10,8 +10,6 @@ import Content from '../components/content';
  * dashboard or main year/quarter/week content page
  */
 export default function Main() {
-  /** @todo FAKE DATA FOR DEBUG PURPOSES */
-
   const [showContent, setShowContent] = useState(false);
 
   /** FULL DATA FROM */
