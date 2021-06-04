@@ -8,7 +8,7 @@ import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/re
 import YearCard from '../components/year-card';
 import Main from '../pages/index';
 
-const expectedYear = new Date().getFullYear();
+const expectedYear = new Date().getFullYear() - 1;
 
 describe('Dashboard Unit Tests', () => {
   beforeEach(() => {
@@ -36,7 +36,7 @@ describe('Dashboard Unit Tests', () => {
     render(<Main />);
     const yrLenBefore = screen.queryAllByText(`${expectedYear}-${expectedYear + 1}`).length;
     fireEvent.click(screen.getByText('Add Year'));
-    const yrLenAfter = await waitFor(() => screen.getAllByText(`${expectedYear}-${expectedYear + 1}`));
+    const yrLenAfter = await waitFor(() => screen.getAllByText(/([1-9](\d){3})-([1-9](\d){3})/));
     expect(yrLenAfter.length).toBe(yrLenBefore + 1);
   });
   it('Clicking settings button creates dropdown', async () => {

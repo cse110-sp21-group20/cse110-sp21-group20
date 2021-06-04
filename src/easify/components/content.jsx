@@ -60,11 +60,6 @@ export default function Content({ changePage, year, week, quarter, entries, data
 
         {/** QUARTER HEADERS */}
         <div className={styles.quarterheader}>
-          {/**
-           * TO DO
-           * - figure out where buttons lead to
-           * - ui of the overall header
-           */}
           <button
             type="button"
             onClick={() => quarter.set('q1')}

@@ -8,7 +8,7 @@ import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/re
 import EntryCard from '../components/entry-card';
 import Main from '../pages/index';
 
-const expectedYear = new Date().getFullYear();
+const expectedYear = new Date().getFullYear() - 1;
 const today = new Date().toDateString();
 describe('EntryCard Unit Tests', () => {
   beforeEach(() => {
