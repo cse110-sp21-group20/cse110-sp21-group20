@@ -9,7 +9,7 @@ import Main from '../pages/index';
 // Data format
 const yearTemplate = {
   id: expect.anything(),
-  year: new Date().getFullYear(),
+  year: new Date().getFullYear() - 1,
   q1: {
     w1: [],
     w2: [],
@@ -21,6 +21,7 @@ const yearTemplate = {
     w8: [],
     w9: [],
     w10: [],
+    w11: []
   },
   q2: {
     w1: [],
@@ -33,6 +34,7 @@ const yearTemplate = {
     w8: [],
     w9: [],
     w10: [],
+    w11: []
   },
   q3: {
     w1: [],
@@ -45,21 +47,10 @@ const yearTemplate = {
     w8: [],
     w9: [],
     w10: [],
-  },
-  q4: {
-    w1: [],
-    w2: [],
-    w3: [],
-    w4: [],
-    w5: [],
-    w6: [],
-    w7: [],
-    w8: [],
-    w9: [],
-    w10: [],
-  },
+    w11: []
+  }
 };
-const expectedYear = new Date().getFullYear();
+const expectedYear = new Date().getFullYear() - 1;
 const today = new Date().toDateString();
 
 describe('Local Storage Unit Tests', () => {
