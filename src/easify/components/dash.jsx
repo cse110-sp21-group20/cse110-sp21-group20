@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 import styles from '../styles/Dash.module.css';
-import models from '../models/models';
 import YearCard from './year-card';
 import Settings from './settings';
 
@@ -21,6 +20,57 @@ export default function Dash({ data, changePage, setYear }) {
         rj={resetJournal}
         setrj={() => setResetJournal(!resetJournal)}
       />
+      <div
+        aria-hidden="true"
+        onClick={() => data.set([...data.val,
+          {
+            id: Date.now() * Math.random(),
+            year: data.val[data.val.length - 1].year + 1,
+            q1: {
+              w1: [],
+              w2: [],
+              w3: [],
+              w4: [],
+              w5: [],
+              w6: [],
+              w7: [],
+              w8: [],
+              w9: [],
+              w10: [],
+              w11: [],
+            },
+            q2: {
+              w1: [],
+              w2: [],
+              w3: [],
+              w4: [],
+              w5: [],
+              w6: [],
+              w7: [],
+              w8: [],
+              w9: [],
+              w10: [],
+              w11: [],
+            },
+            q3: {
+              w1: [],
+              w2: [],
+              w3: [],
+              w4: [],
+              w5: [],
+              w6: [],
+              w7: [],
+              w8: [],
+              w9: [],
+              w10: [],
+              w11: [],
+            },
+          }])}
+        className={resetJournal ? styles.newyearbtnh : styles.newyearbtn}
+      >
+        <img className={styles.plusimg} src="/icons/plussign.svg" alt="plus sign" />
+        <p>Add Year</p>
+      </div>
       <div className={resetJournal ? styles.welcomeh : styles.welcome}>
         {/** Order of HTML reversed to accomodate
          * flex-column-reverse property */}
@@ -36,66 +86,6 @@ export default function Dash({ data, changePage, setYear }) {
             onClick={() => { setYear(data.val.indexOf(year)); changePage(); }}
           />
         ))}
-      </div>
-      <div
-        aria-hidden="true"
-        onClick={() => data.set([...data.val,
-          {
-            id: Date.now() * Math.random(),
-            year: new Date().getFullYear(),
-            q1: {
-              w1: [],
-              w2: [],
-              w3: [],
-              w4: [],
-              w5: [],
-              w6: [],
-              w7: [],
-              w8: [],
-              w9: [],
-              w10: [],
-            },
-            q2: {
-              w1: [],
-              w2: [],
-              w3: [],
-              w4: [],
-              w5: [],
-              w6: [],
-              w7: [],
-              w8: [],
-              w9: [],
-              w10: [],
-            },
-            q3: {
-              w1: [],
-              w2: [],
-              w3: [],
-              w4: [],
-              w5: [],
-              w6: [],
-              w7: [],
-              w8: [],
-              w9: [],
-              w10: [],
-            },
-            q4: {
-              w1: [],
-              w2: [],
-              w3: [],
-              w4: [],
-              w5: [],
-              w6: [],
-              w7: [],
-              w8: [],
-              w9: [],
-              w10: [],
-            },
-          }])}
-        className={resetJournal ? styles.newyearbtnh : styles.newyearbtn}
-      >
-        <img className={styles.plusimg} src="/icons/plussign.svg" alt="plus sign" />
-        <p>Add Year</p>
       </div>
 
     </div>

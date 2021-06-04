@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 import { useState, useEffect, useRef } from 'react';
 
 import styles from '../styles/Settings.module.css';
@@ -36,38 +37,39 @@ export default function Settings({ rj, setrj }) {
   }, [showPopup]);
 
   return (
-      <>
-        <div className={styles.header}>
-          {/** 'Settings' button and subsequent popup menu */}
-          <div>
-            <p 
-              className={resetJournal ? styles.settingsbtnh : styles.settingsbtn}
-              aria-hidden="true"
-              onClick={() => setShowPopup(!showPopup)}
-              ref={popupSettings}
-            >
-              Settings
-            </p>
-            {showPopup ? (
-              <div className={styles.popup} data-testid='dropdown'>
-                <p 
-                  aria-hidden="true" 
-                  onClick={() => {
-                  setResetJournal(!resetJournal); 
+    <>
+      <div className={styles.header}>
+        {/** 'Settings' button and subsequent popup menu */}
+        <div>
+          <p
+            className={resetJournal ? styles.settingsbtnh : styles.settingsbtn}
+            aria-hidden="true"
+            onClick={() => setShowPopup(!showPopup)}
+            ref={popupSettings}
+          >
+            <img className={styles.gear} src="/icons/gear.svg" alt="gear" />
+            Settings
+          </p>
+          {showPopup ? (
+            <div className={styles.popup} data-testid="dropdown">
+              <p
+                aria-hidden="true"
+                onClick={() => {
+                  setResetJournal(!resetJournal);
                   setrj();
                 }}
               >
                 Reset Journal
               </p>
               {/** !theme ? (
-                  <p aria-hidden="true" onClick={() => setTheme(!theme)}>
-                    Dark Mode
-                  </p>
-                ) : (
-                  <p aria-hidden="true" onClick={() => setTheme(!theme)}>
-                    Light Mode
-                  </p>
-                ) */}
+                <p aria-hidden="true" onClick={() => setTheme(!theme)}>
+                  Dark Mode
+                </p>
+              ) : (
+                <p aria-hidden="true" onClick={() => setTheme(!theme)}>
+                  Light Mode
+                </p>
+              ) */}
             </div>
           ) : null}
         </div>

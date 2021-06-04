@@ -10,10 +10,12 @@
 .header {
   display: flex;
   width: 100%;
-  height: 8rem;
-  min-height: 5rem;
-  background-color: white;
-  align-items: center;
+  height: 6rem;
+  min-height: 6rem;
+  background-color: var(--color-gray);
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 1px solid var(--color-green);
 }
 
 .main {
@@ -24,24 +26,6 @@
   min-height: 0;
 }
 
-.settingsbtn {
-  width: 9rem;
-}
-
-.settingsbtn span {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.topheader {
-  display: flex;
-  justify-content: space-between;
-  height: 2rem;
-  margin-left: auto;
-  padding: 0.5%;
-}
-
 .filledIndexItem,
 .indexItem {
   width: 100%;
@@ -50,10 +34,11 @@
   font-size: 12px;
   position: relative;
   border: 0;
-  background-color: var(--color-white);
+  background-color: var(--color-gray);
   list-style-type: none;
   border-radius: 10px;
   margin-bottom: 0.2rem;
+  flex-shrink: 0;
 }
 
 .indexItem:hover {
@@ -79,16 +64,17 @@
 
 .addbtn {
   border: 0;
-  position: absolute;
-  padding-right: 3rem;
-  padding-left: 3rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  right: 1rem;
-  top: 1rem;
+  padding-right: 1.1rem;
+  padding-left: 1.1rem;
+  padding-top: 1.1rem;
+  padding-bottom: 1.1rem;
+  margin-bottom: 1rem;
+  margin-right: 0.5rem;
+  display: flex;
   color: var(--color-green);
-  font-weight: 500;
-  font-size: 1.3rem;
+  flex-shrink: 0;
+  font-weight: 800;
+  font-size: 1.1rem;
   background-color: var(--color-white);
   border-radius: 99px;
   filter: drop-shadow(0px 6px 4px rgba(99, 153, 130, 0.45));
@@ -118,15 +104,20 @@
 .backbtn {
   cursor: pointer;
   display: flex;
-  width: 12rem;
-  height: 2rem;
+  width: 13rem;
+  height: 4rem;
+  box-sizing: border-box;
   flex-shrink: 0;
   align-items: center;
-  color: var(--color-gray-dark);
+  font-weight: 800;
+  color: var(--color-black);
   justify-content: space-evenly;
   margin-left: 1rem;
-  border-radius: 3px;
+  margin-right: 1rem;
+  border-radius: 99px;
   background-color: var(--color-white);
+  margin-bottom: 0.7rem;
+  filter: drop-shadow(0px 6px 4px rgba(99, 153, 130, 0.45));
   border: 0;
 }
 
@@ -136,34 +127,22 @@
   height: 1rem;
 }
 
-.line {
-  margin: 2px 0;
-  height: 2px;
-  background: repeating-linear-gradient(
-    to right,
-    #e3e5e5 0,
-    #e3e5e5 5px,
-    transparent 5px,
-    transparent 7px
-  );
-  /*5px red then 2px transparent -> repeat this!*/
+.backbtn:active {
+  transform: translate(0px, 1px);
 }
 
 /* QUARTER HEADER */
 .quarterheader {
   display: flex;
-  margin-left: auto;
-  margin-right: auto;
+  width: 50%;
   justify-content: space-evenly;
-  border-bottom: 1px dotted var(--color-gray-dark);
 }
 
 .qtrbtnselect,
 .qtrbtn {
   cursor: pointer;
-  background-color: white;
+  background-color: var(--color-gray);
   color: var(--color-gray-dark);
-  flex-shrink: 0;
   border: 0;
   height: 3.5rem;
   width: 9rem;
@@ -173,11 +152,12 @@
 
 .qtrbtnselect {
   border-radius: 5px;
+  background-color: var(--color-white);
   color: var(--color-black);
-  border-left: 1px solid var(--color-gray-dark);
-  border-top: 1px solid var(--color-gray-dark);
-  border-right: 1px solid var(--color-gray-dark);
-  border-bottom: 0;
+  border-left: 1px solid var(--color-green);
+  border-top: 1px solid var(--color-green);
+  border-right: 1px solid var(--color-green);
+  z-index: 10;
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
 }
@@ -189,9 +169,45 @@
 }
 
 .index {
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  justify-content: flex-start;
   width: 14rem;
   height: 100%;
   box-sizing: border-box;
   padding: 0.5rem;
-  background-color: var(--color-white);
+  background-color: var(--color-gray);
+}
+
+.plusicon {
+  margin-right: 1rem;
+}
+
+@media (max-width: 700px) {
+  .backbtn {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+  }
+  .addbtn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 100;
+  }
+  .quarterheader {
+    width: 100%;
+  }
+  .entrieswrap,
+  .index {
+    height: 90%;
+    box-sizing: border-box;
+    border-bottom: 2px solid var(--color-black);
+  }
+
+  .index {
+    justify-content: space-around;
+  }
 }
