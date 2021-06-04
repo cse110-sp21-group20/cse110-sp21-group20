@@ -1,24 +1,13 @@
-/** GET RID OF LINE BELOW WHEN DATA IS REAL */
 /* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react';
 import styles from '../styles/Main.module.css';
-import models from '../models/models';
 import Dash from '../components/dash';
 import Content from '../components/content';
 
 /**
- * @file This file will contain the necessarry UI+Implementation
+ * This file will contain the necessarry UI+Implementation
  * for the index page of the web-app, either showing the
  * dashboard or main year/quarter/week content page
- * @module Pages
- */
-
-/**
- * @todo Needs a description.
- * @returns Index Page Object
- * @author Josh Dreben
- * @name Main
- * @function
  */
 export default function Main() {
   /** @todo FAKE DATA FOR DEBUG PURPOSES */

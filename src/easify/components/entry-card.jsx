@@ -1,7 +1,26 @@
 /* eslint-disable no-param-reassign */
 import styles from '../styles/EntryCard.module.css';
 import Row from './row-card';
-
+/**
+ * entry:
+ * {
+ *   title: String
+ *   rows: [
+ *     {
+ *       text: String,
+ *       type: String (1 of: ['hw', 'ex', {misc}]),
+ *       rowComplete: Bool
+ *     },...
+ *   ]
+ * }
+ * entries:
+ * {
+ *    val: [
+ *      {entry}
+ *    ],
+ *    set: function ()
+ * }
+ */
 export default function EntryCard({ entry, entries }) {
   function addRow() {
     const index = entries.val.findIndex((currE) => currE.id === entry.id);
@@ -79,7 +98,7 @@ export default function EntryCard({ entry, entries }) {
         value={entry.title}
         onInput={(e) => updateEntryTitle(e.target.value)}
       />
-      <img aria-hidden="true" onClick={() => deleteEntry()} className={styles.trashcan} src="/icons/trashcan.svg" alt="trashcan" />
+      <img aria-hidden="true" onClick={() => deleteEntry()} className={styles.trashcan} src="/icons/trashcan.svg" alt="delete" />
       <div className={styles.rowwrap}>
         {entry.rows.map((row) => (
           <Row

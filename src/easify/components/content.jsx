@@ -1,7 +1,5 @@
 /* eslint-disable no-unused-vars */
 import { useState } from 'react';
-import Image from 'next/image';
-import Settings from './settings';
 import styles from '../styles/Content.module.css';
 import EntryCard from './entry-card';
 
@@ -13,12 +11,7 @@ import EntryCard from './entry-card';
 
 /**
  * Content of the web-app
- * @returns Content object
- * @author Josh Dreben
- * @name Content
- * @function
  */
-/* DELETE LINE BELOW WHEN YEAR, WEEK, AND QUARTER ARE ALL BEING USED */
 // eslint-disable-next-line no-unused-vars
 export default function Content({ changePage, year, week, quarter, entries, data }) {
   const [resetJournal, setResetJournal] = useState(false);
