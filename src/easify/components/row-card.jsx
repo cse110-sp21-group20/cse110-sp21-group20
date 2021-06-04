@@ -36,7 +36,7 @@ export default function Row({ row, updateRowText, updateRowType, moveRowForward,
       <div>
         <img
           onClick={() => setShowPopup(!showPopup)}
-          aria-hidden="true"
+          role="button"
           className={styles.icon}
           src={`/icons/${(rowType === 'hw' ? 'rarrow.svg' : (rowType === 'ex' ? 'star.svg' : 'dots.svg'))}`}
           alt="bullet icon"
@@ -45,30 +45,30 @@ export default function Row({ row, updateRowText, updateRowType, moveRowForward,
           <div ref={popup} className={styles.popup}>
             <div className={styles.btypewrap}>
               <h2>BULLET TYPE</h2>
-              <div aria-hidden="true" onClick={() => setRowType('hw')} className={styles.popupentry}>
+              <div role="button" aria-label="Homework" onClick={() => setRowType('hw')} className={styles.popupentry}>
                 <img className={styles.icon} src="/icons/rarrow.svg" alt="hw icon" />
                 <p>Homework</p>
               </div>
-              <div aria-hidden="true" onClick={() => setRowType('ex')} className={styles.popupentry}>
+              <div role="button" aria-label="Exam" onClick={() => setRowType('ex')} className={styles.popupentry}>
                 <img className={styles.icon} src="/icons/star.svg" alt="exam icon" />
                 <p>Exam</p>
               </div>
-              <div aria-hidden="true" onClick={() => setRowType('ms')} className={styles.popupentry}>
+              <div role="button" aria-label="Misc" onClick={() => setRowType('ms')} className={styles.popupentry}>
                 <img className={styles.icon} src="/icons/dots.svg" alt="misc icon" />
                 <p>Misc.</p>
               </div>
             </div>
             <div className={styles.btypewrap}>
               <h2>ACTIONS</h2>
-              <div aria-hidden="true" onClick={() => moveRowForward()} className={styles.popupentry}>
+              <div role="button" aria-label="Push Forward" onClick={() => moveRowForward()} className={styles.popupentry}>
                 <img className={styles.icon} src="/icons/next.svg" alt="next icon" />
                 <p>Push Forward</p>
               </div>
-              <div aria-hidden="true" onClick={() => setRowComplete(!rowComplete)} className={styles.popupentry}>
+              <div role="button" aria-label="Mark Complete" onClick={() => setRowComplete(!rowComplete)} className={styles.popupentry}>
                 <img className={styles.icon} src="/icons/complete.svg" alt="next icon" />
                 <p>Mark Complete</p>
               </div>
-              <div aria-hidden="true" onClick={() => deleteRow()} className={styles.popupentry}>
+              <div role="button" aria-label="Delete Row" onClick={() => deleteRow()} className={styles.popupentry}>
                 <img className={styles.icon} src="/icons/trashcan.svg" alt="next icon" />
                 <p>Delete</p>
               </div>

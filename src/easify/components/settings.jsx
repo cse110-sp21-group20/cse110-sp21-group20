@@ -40,10 +40,9 @@ export default function Settings({ rj, setrj }) {
     <>
       <div className={styles.header}>
         {/** 'Settings' button and subsequent popup menu */}
-        <div>
+        <div role="button" aria-label="Settings">
           <p
             className={resetJournal ? styles.settingsbtnh : styles.settingsbtn}
-            aria-hidden="true"
             onClick={() => setShowPopup(!showPopup)}
             ref={popupSettings}
           >
@@ -51,9 +50,8 @@ export default function Settings({ rj, setrj }) {
             Settings
           </p>
           {showPopup ? (
-            <div className={styles.popup} data-testid="dropdown">
+            <div className={styles.popup} role="button" aria-label="Reset Journal" data-testid="dropdown">
               <p
-                aria-hidden="true"
                 onClick={() => {
                   setResetJournal(!resetJournal);
                   setrj();
@@ -76,11 +74,11 @@ export default function Settings({ rj, setrj }) {
       </div>
       {resetJournal ? (
         // Warning message for when 'reset journal' is clicked
-        <div className={styles.warning}>
+        <div className={styles.warning} role="alert">
           <p>Are You Sure?</p>
           <div className={styles.warnbtnwrap}>
             <p
-              aria-hidden="true"
+              role="button"
               onClick={() => {
                 localStorage.setItem('data', '');
                 location.reload();
@@ -92,7 +90,7 @@ export default function Settings({ rj, setrj }) {
             </p>
             <p
               id="warnno"
-              aria-hidden="true"
+              role="button"
               onClick={() => {
                 setResetJournal(false);
                 setrj();
