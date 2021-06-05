@@ -98,7 +98,7 @@ export default function EntryCard({ entry, entries }) {
         value={entry.title}
         onInput={(e) => updateEntryTitle(e.target.value)}
       />
-      <img aria-hidden="true" onClick={() => deleteEntry()} className={styles.trashcan} src="/icons/trashcan.svg" alt="delete" />
+      <img role="button" aria-label="Delete Entry" onClick={() => deleteEntry()} className={styles.trashcan} src="/icons/trashcan.svg" alt="delete" />
       <div className={styles.rowwrap}>
         {entry.rows.map((row) => (
           <Row

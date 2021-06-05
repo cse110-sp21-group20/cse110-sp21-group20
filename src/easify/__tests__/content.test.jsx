@@ -14,7 +14,6 @@ describe('EntryCard Unit Tests', () => {
   beforeEach(() => {
     localStorage.clear();
   });
-
   afterEach(() => {
     cleanup();
   });
