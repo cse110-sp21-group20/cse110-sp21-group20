@@ -1,28 +1,15 @@
-/** GET RID OF LINE BELOW WHEN DATA IS REAL */
 /* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react';
 import styles from '../styles/Main.module.css';
-import models from '../models/models';
 import Dash from '../components/dash';
 import Content from '../components/content';
 
 /**
- * @file This file will contain the necessarry UI+Implementation
+ * This file will contain the necessarry UI+Implementation
  * for the index page of the web-app, either showing the
  * dashboard or main year/quarter/week content page
- * @module Pages
- */
-
-/**
- * @todo Needs a description.
- * @returns Index Page Object
- * @author Josh Dreben
- * @name Main
- * @function
  */
 export default function Main() {
-  /** @todo FAKE DATA FOR DEBUG PURPOSES */
-
   const [showContent, setShowContent] = useState(false);
 
   /** FULL DATA FROM */
@@ -44,7 +31,7 @@ export default function Main() {
     } else {
       const newYear = {
         id: Date.now() * Math.random(),
-        year: new Date().getFullYear(),
+        year: (new Date().getMonth() < 9) ? new Date().getFullYear() - 1 : new Date().getFullYear(),
         q1: {
           w1: [],
           w2: [],
@@ -56,6 +43,7 @@ export default function Main() {
           w8: [],
           w9: [],
           w10: [],
+          w11: [],
         },
         q2: {
           w1: [],
@@ -68,6 +56,7 @@ export default function Main() {
           w8: [],
           w9: [],
           w10: [],
+          w11: [],
         },
         q3: {
           w1: [],
@@ -80,18 +69,7 @@ export default function Main() {
           w8: [],
           w9: [],
           w10: [],
-        },
-        q4: {
-          w1: [],
-          w2: [],
-          w3: [],
-          w4: [],
-          w5: [],
-          w6: [],
-          w7: [],
-          w8: [],
-          w9: [],
-          w10: [],
+          w11: [],
         },
       };
       setData([newYear]);
@@ -117,7 +95,6 @@ export default function Main() {
   }, [entries]);
 
   useEffect(() => {
-    console.log(currYear, currQuarter, currWeek);
     if (data.length > 0) {
       const showEntries = data[currYear][currQuarter][currWeek];
       if (showEntries) {
