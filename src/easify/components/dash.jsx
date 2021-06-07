@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 import styles from '../styles/Dash.module.css';
 import YearCard from './year-card';
@@ -11,10 +11,32 @@ import Settings from './settings';
  */
 export default function Dash({ data, changePage, setYear }) {
   const [resetJournal, setResetJournal] = useState(false);
+  const [tutorialOn, setTutorialOn] = useState(false);
   // const [theme, setTheme] = useState(false);
 
   return (
     <div className={styles.wrap}>
+      <button 
+        className={resetJournal ? styles.helpbtnh : styles.helpbtn} 
+        onClick={() => setTutorialOn(!tutorialOn)}
+      >
+        ?
+      </button>
+      {tutorialOn ? (
+        <>
+        <button 
+        className={styles.exitTutorial} 
+        onClick={() => setTutorialOn(!tutorialOn)}
+        >
+        EXIT TUTORIAL
+        </button>
+        <img 
+          className={styles.dashtutorial}
+          src="/tutorial_dash.png" 
+          alt="Tutorial of Dash"
+        />
+        </>
+      ) : null}
       <Settings
         data={{ val: data, set: data.set }}
         rj={resetJournal}

@@ -15,6 +15,7 @@ import EntryCard from './entry-card';
 // eslint-disable-next-line no-unused-vars
 export default function Content({ changePage, year, week, quarter, entries, data }) {
   const [resetJournal, setResetJournal] = useState(false);
+  const [tutorialOn, setTutorialOn] = useState(false);
 
   return (
     <div className={styles.wrap}>
@@ -88,6 +89,27 @@ export default function Content({ changePage, year, week, quarter, entries, data
             Spring
           </button>
         </div>
+        <button 
+          className={styles.helpbtn} 
+          onClick={() => setTutorialOn(!tutorialOn)}
+        >
+          ?
+        </button>
+        {tutorialOn ? (
+          <>
+          <button 
+          className={styles.exitTutorial} 
+          onClick={() => setTutorialOn(!tutorialOn)}
+          >
+          EXIT TUTORIAL
+          </button>
+          <img 
+            className={styles.contenttutorial}
+            src="/tutorial_content.png" 
+            alt="Tutorial of Dash"
+          />
+          </>
+        ) : null}
         <button
           type="button"
           onClick={() => entries.set([

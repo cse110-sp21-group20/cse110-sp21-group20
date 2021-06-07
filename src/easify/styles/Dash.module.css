@@ -18,6 +18,66 @@
   background-color: var(--color-gray);
 }
 
+.helpbtnh,
+.helpbtn {
+  color: var(--color-green);
+  font-size: 1.5rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-evenly;
+  position: absolute;
+  right: 12rem;
+  top: 1.65rem;
+  background-color: var(--color-white);
+  padding: .65rem;
+  width: 3rem;
+  border-radius: 50%;
+  text-align: center;
+  box-shadow: 0px 16px 24px rgba(54, 123, 245, 0.16),
+    0px 6px 12px rgba(54, 123, 245, 0.16);
+}
+
+.helpbtn:active {
+  transform: translate(0px, 1px);
+}
+
+.helpbtnh {
+  filter: blur(1.5px);
+}
+
+.dashtutorial {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 14;
+}
+
+.exitTutorial {
+  position: absolute;
+  bottom: 2rem;
+  z-index: 15;
+  font: 2rem;
+  font-weight: 600;
+  color: var(--color-green);
+  background-color: var(--color-white);
+  padding: 1rem 1rem;
+  width: 10rem;
+  border-radius: 10px;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0px 16px 24px rgba(54, 123, 245, 0.16),
+    0px 6px 12px rgba(54, 123, 245, 0.16);
+}
+
+.exitTutorial:active {
+  transform: translate(0px, 1px);
+}
+
 .resetjwrap {
   display: flex;
   flex-direction: column;
