@@ -1,9 +1,10 @@
 /* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react';
+import Head from 'next/head';
+
 import styles from '../styles/Main.module.css';
 import Dash from '../components/dash';
 import Content from '../components/content';
-import Head from 'next/head'
 /**
  * This file will contain the necessarry UI+Implementation
  * for the index page of the web-app, either showing the
