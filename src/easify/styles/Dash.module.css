@@ -15,7 +15,67 @@
   box-sizing: border-box;
   padding: 1rem;
   flex-direction: row-reverse;
+  background-color: var(--color-gray);
+}
+
+.helpbtnh,
+.helpbtn {
+  color: var(--color-green);
+  font-size: 1.5rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-evenly;
+  position: absolute;
+  right: 12rem;
+  top: 2rem;
   background-color: var(--color-white);
+  padding: .25rem .25rem .25rem .25rem;
+  width: 2.5rem;
+  border-radius: 50%;
+  text-align: center;
+  box-shadow: 0px 16px 24px rgba(54, 123, 245, 0.16),
+    0px 6px 12px rgba(54, 123, 245, 0.16);
+}
+
+.helpbtn:active {
+  transform: translate(0px, 1px);
+}
+
+.helpbtnh {
+  filter: blur(1.5px);
+}
+
+.dashtutorial {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 14;
+}
+
+.exitTutorial {
+  position: absolute;
+  bottom: 2rem;
+  z-index: 15;
+  font: 2rem;
+  font-weight: 600;
+  color: var(--color-green);
+  background-color: var(--color-white);
+  padding: 1rem 1rem;
+  width: 10rem;
+  border-radius: 10px;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0px 16px 24px rgba(54, 123, 245, 0.16),
+    0px 6px 12px rgba(54, 123, 245, 0.16);
+}
+
+.exitTutorial:active {
+  transform: translate(0px, 1px);
 }
 
 .resetjwrap {
@@ -61,6 +121,8 @@
   flex-wrap: wrap;
   max-width: 50rem;
   overflow-y: auto;
+  border-top: 2px solid var(--color-green);
+  padding-top: 2rem;
 }
 
 .mainh {
@@ -99,13 +161,13 @@
   box-shadow: 0px 16px 24px rgba(54, 123, 245, 0.16),
     0px 6px 12px rgba(54, 123, 245, 0.16);
   border-radius: 99px;
-  margin-bottom: 1rem;
   align-items: center;
+  position: absolute;
+  left: 1rem;
+  top: 0.1rem;
   justify-content: space-evenly;
   cursor: pointer;
-  position: absolute;
-  bottom: 6rem;
-  margin: 0 auto;
+  margin-top: 1.5rem;
 }
 
 .newyearbtnh {
@@ -116,7 +178,7 @@
 .newyearbtn > p {
   user-select: none;
   font-weight: 500;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: var(--color-green);
 }
 
@@ -130,6 +192,6 @@
   width: 16px;
 }
 
-.plusimg{
+.plusimg {
   user-select: none;
 }

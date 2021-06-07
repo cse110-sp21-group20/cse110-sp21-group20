@@ -32,7 +32,7 @@ export default function Row({ row, updateRowText, updateRowType, moveRowForward,
   }, [rowComplete]);
 
   return (
-    <div className={styles.row}>
+    <div className={showPopup ? styles.rowselect : styles.row}>
       <div>
         <img
           onClick={() => setShowPopup(!showPopup)}
@@ -43,8 +43,8 @@ export default function Row({ row, updateRowText, updateRowType, moveRowForward,
         />
         {showPopup ? (
           <div ref={popup} className={styles.popup}>
-            <h2>BULLET TYPE</h2>
             <div className={styles.btypewrap}>
+              <h2>BULLET TYPE</h2>
               <div aria-hidden="true" onClick={() => setRowType('hw')} className={styles.popupentry}>
                 <img className={styles.icon} src="/icons/rarrow.svg" alt="hw icon" />
                 <p>Homework</p>
@@ -58,8 +58,8 @@ export default function Row({ row, updateRowText, updateRowType, moveRowForward,
                 <p>Misc.</p>
               </div>
             </div>
-            <h2 style={{ marginTop: '0.3rem' }}>BULLET FUNC.</h2>
             <div className={styles.btypewrap}>
+              <h2>ACTIONS</h2>
               <div aria-hidden="true" onClick={() => moveRowForward()} className={styles.popupentry}>
                 <img className={styles.icon} src="/icons/next.svg" alt="next icon" />
                 <p>Push Forward</p>
@@ -76,7 +76,7 @@ export default function Row({ row, updateRowText, updateRowType, moveRowForward,
           </div>
         ) : null}
       </div>
-      <input style={rowComplete ? { textDecoration: 'line-through' } : null} value={row.text} onInput={(e) => updateRowText(e.target.value)} />
+      <input style={rowComplete ? { textDecoration: 'line-through' } : null} value={row.text} onInput={(e) => updateRowText(e.target.value)} data-testid='rowInput' />
     </div>
   );
 }

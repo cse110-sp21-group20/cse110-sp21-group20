@@ -109,32 +109,32 @@ jobs:
       - name: Build
         run: npm run build
         working-directory: ${{env.working-dir}}
-  # create-docs:
-  #   runs-on: ubuntu-latest
-  #   env:
-  #     working-dir: ./src/easify
-  #   needs: lint
-  #   steps:
-  #     #Checkout
-  #     - name: Checkout
-  #       uses: actions/checkout@v2
-  #     #Node Setup
-  #     - name: Node Setup
-  #       uses: actions/setup-node@v2
-  #       with:
-  #         node-version: ${{matrix.node}}
-  #     #Cache dependencies for faster workflow runs
-  #     - name: Cache
-  #       uses: actions/cache@v2
-  #       with:
-  #         path: ~/.npm
-  #         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-  #     #Install with npm
-  #     - name: Install modules
-  #       run: npm ci --prefer-offline --no-audit
-  #       working-directory: ${{env.working-dir}}
-  #     #Build and test
-  #     - name: Build
-  #       run: npm run build
-  #       working-directory: ${{env.working-dir}}\
+  unit-tests:
+    runs-on: ubuntu-latest
+    env:
+      working-dir: ./src/easify
+    needs: lint
+    steps:
+      #Checkout
+      - name: Checkout
+        uses: actions/checkout@v2
+      #Node Setup
+      - name: Node Setup
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{matrix.node}}
+      #Cache dependencies for faster workflow runs
+      - name: Cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+      #Install with npm
+      - name: Install modules
+        run: npm ci --prefer-offline --no-audit
+        working-directory: ${{env.working-dir}}
+      #Test
+      - name: Build
+        run: npm test
+        working-directory: ${{env.working-dir}}
   

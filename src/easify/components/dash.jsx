@@ -1,7 +1,6 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 import styles from '../styles/Dash.module.css';
-import models from '../models/models';
 import YearCard from './year-card';
 import Settings from './settings';
 
@@ -10,18 +9,90 @@ import Settings from './settings';
  * For the user's dashboard
  * @returns Dash Object
  */
-export default function Dash({ data, changePage }) {
+export default function Dash({ data, changePage, setYear }) {
   const [resetJournal, setResetJournal] = useState(false);
-  //const [theme, setTheme] = useState(false);
+  const [tutorialOn, setTutorialOn] = useState(false);
+  // const [theme, setTheme] = useState(false);
 
   return (
     <div className={styles.wrap}>
+      <button 
+        className={resetJournal ? styles.helpbtnh : styles.helpbtn} 
+        onClick={() => setTutorialOn(!tutorialOn)}
+      >
+        ?
+      </button>
+      {tutorialOn ? (
+        <>
+        <button 
+        className={styles.exitTutorial} 
+        onClick={() => setTutorialOn(!tutorialOn)}
+        >
+        EXIT TUTORIAL
+        </button>
+        <img 
+          className={styles.dashtutorial}
+          src="/tutorial_dash.png" 
+          alt="Tutorial of Dash"
+        />
+        </>
+      ) : null}
       <Settings
-        data={{val: data, set: data.set}}
+        data={{ val: data, set: data.set }}
         rj={resetJournal}
         setrj={() => setResetJournal(!resetJournal)}
       />
-      
+      <div
+        aria-hidden="true"
+        onClick={() => data.set([...data.val,
+          {
+            id: Date.now() * Math.random(),
+            year: data.val[data.val.length - 1].year + 1,
+            q1: {
+              w1: [],
+              w2: [],
+              w3: [],
+              w4: [],
+              w5: [],
+              w6: [],
+              w7: [],
+              w8: [],
+              w9: [],
+              w10: [],
+              w11: [],
+            },
+            q2: {
+              w1: [],
+              w2: [],
+              w3: [],
+              w4: [],
+              w5: [],
+              w6: [],
+              w7: [],
+              w8: [],
+              w9: [],
+              w10: [],
+              w11: [],
+            },
+            q3: {
+              w1: [],
+              w2: [],
+              w3: [],
+              w4: [],
+              w5: [],
+              w6: [],
+              w7: [],
+              w8: [],
+              w9: [],
+              w10: [],
+              w11: [],
+            },
+          }])}
+        className={resetJournal ? styles.newyearbtnh : styles.newyearbtn}
+      >
+        <img className={styles.plusimg} src="/icons/plussign.svg" alt="plus sign" />
+        <p>Add Year</p>
+      </div>
       <div className={resetJournal ? styles.welcomeh : styles.welcome}>
         {/** Order of HTML reversed to accomodate
          * flex-column-reverse property */}
@@ -34,25 +105,9 @@ export default function Dash({ data, changePage }) {
             key={year.id}
             data={year}
             index={data.val.indexOf(year) + 1}
-            onClick={() => changePage()}
+            onClick={() => { setYear(data.val.indexOf(year)); changePage(); }}
           />
         ))}
-      </div>
-      <div
-        aria-hidden="true"
-        onClick={() => data.set([...data.val,
-          {
-            id: Date.now() * Math.random(),
-            year: new Date().getFullYear(),
-            q1: models.week,
-            q2: models.week,
-            q3: models.week,
-            q4: models.week,
-          }])}
-        className={resetJournal ? styles.newyearbtnh : styles.newyearbtn}
-      >
-        <img className={styles.plusimg}src="/icons/plussign.svg" alt="plus sign" />
-        <p>Add Year</p>
       </div>
 
     </div>

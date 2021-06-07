@@ -1,7 +1,26 @@
 /* eslint-disable no-param-reassign */
 import styles from '../styles/EntryCard.module.css';
 import Row from './row-card';
-
+/**
+ * entry:
+ * {
+ *   title: String
+ *   rows: [
+ *     {
+ *       text: String,
+ *       type: String (1 of: ['hw', 'ex', {misc}]),
+ *       rowComplete: Bool
+ *     },...
+ *   ]
+ * }
+ * entries:
+ * {
+ *    val: [
+ *      {entry}
+ *    ],
+ *    set: function ()
+ * }
+ */
 export default function EntryCard({ entry, entries }) {
   function addRow() {
     const index = entries.val.findIndex((currE) => currE.id === entry.id);
@@ -60,14 +79,26 @@ export default function EntryCard({ entry, entries }) {
     entries.set(newEntries);
   }
 
+  function updateEntryTitle(data) {
+    const index = entries.val.findIndex((currE) => currE.id === entry.id);
+    entry.title = data;
+    const newEntries = [...entries.val];
+    newEntries[index] = entry;
+    entries.set(newEntries);
+  }
+
   function deleteEntry() {
     entries.set(entries.val.filter((currE) => currE.id !== entry.id));
   }
 
   return (
     <div className={styles.card}>
-      <h1 className={styles.title}>{entry.title}</h1>
-      <img aria-hidden="true" onClick={() => deleteEntry()} className={styles.trashcan} src="/icons/trashcan.svg" alt="trashcan" />
+      <input
+        className={styles.title}
+        value={entry.title}
+        onInput={(e) => updateEntryTitle(e.target.value)}
+      />
+      <img aria-hidden="true" onClick={() => deleteEntry()} className={styles.trashcan} src="/icons/trashcan.svg" alt="delete" />
       <div className={styles.rowwrap}>
         {entry.rows.map((row) => (
           <Row
