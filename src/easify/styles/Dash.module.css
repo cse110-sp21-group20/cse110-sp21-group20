@@ -29,10 +29,10 @@
   justify-content: space-evenly;
   position: absolute;
   right: 12rem;
-  top: 2rem;
+  top: 1.65rem;
   background-color: var(--color-white);
-  padding: .25rem .25rem .25rem .25rem;
-  width: 2.5rem;
+  padding: .65rem;
+  width: 3rem;
   border-radius: 50%;
   text-align: center;
   box-shadow: 0px 16px 24px rgba(54, 123, 245, 0.16),
