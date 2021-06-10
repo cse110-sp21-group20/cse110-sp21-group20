@@ -8,5 +8,6 @@
 [Team Page](admin/team.md)
 
 ## Important Links
+Link to Our App: https://cse110-sp21-group20.vercel.app/ </br>
 Link to Our Final Project Video - Private Version: https://youtu.be/E5zU7Nxtf94 </br>
 Link to Our Final Project Video - Public Version: https://youtu.be/2uYc6xHENlY
